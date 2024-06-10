@@ -6,13 +6,13 @@ class AlignedCell extends StatelessWidget {
   const AlignedCell(
     this.child, {
     super.key,
-    this.mainAxisAlignment = MainAxisAlignment.center,
+    this.mainAxisAlignment,
   });
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.center,
       mainAxisSize: MainAxisSize.max,
       children: [child],
     );

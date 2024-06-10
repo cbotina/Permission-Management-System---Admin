@@ -10,16 +10,19 @@ import 'package:pms_admin/features/periods/presentation/widgets/components/utils
 import 'package:pms_admin/features/periods/presentation/widgets/components/validators/date_validator.dart';
 import 'package:pms_admin/features/periods/presentation/widgets/components/validators/period_name_validator.dart';
 
-class CreatePeriodForm extends StatefulWidget {
-  const CreatePeriodForm({
+class EditPeriodForm extends StatefulWidget {
+  final Period period;
+
+  const EditPeriodForm({
     super.key,
+    required this.period,
   });
 
   @override
-  State<CreatePeriodForm> createState() => _CreatePeriodFormState();
+  State<EditPeriodForm> createState() => _EditPeriodFormState();
 }
 
-class _CreatePeriodFormState extends State<CreatePeriodForm> {
+class _EditPeriodFormState extends State<EditPeriodForm> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   late TextEditingController _startDateController;
@@ -31,6 +34,14 @@ class _CreatePeriodFormState extends State<CreatePeriodForm> {
     _startDateController = TextEditingController();
     _endDateController = TextEditingController();
     _periodNameController = TextEditingController();
+
+    _startDateController.text =
+        widget.period.startDate.toString().split(" ")[0];
+
+    _endDateController.text = widget.period.endDate.toString().split(" ")[0];
+
+    _periodNameController.text = widget.period.name;
+
     super.initState();
   }
 
@@ -58,7 +69,7 @@ class _CreatePeriodFormState extends State<CreatePeriodForm> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              "Crear Nuevo Periodo",
+              "Editar Periodo ${widget.period.name}",
               style: Theme.of(context).textTheme.titleLarge,
             ),
             const SizedBox(height: 30),
@@ -75,7 +86,7 @@ class _CreatePeriodFormState extends State<CreatePeriodForm> {
               width: 250,
               child: DateFormField(
                 label: 'Fecha Inicio',
-                onTap: () => _selectDate(_startDateController),
+                onTap: () => _selectDate(_startDateController, context),
                 controller: _startDateController,
                 validator: dateValidator,
               ),
@@ -85,7 +96,7 @@ class _CreatePeriodFormState extends State<CreatePeriodForm> {
               width: 250,
               child: DateFormField(
                 label: 'Fecha Fin',
-                onTap: () => _selectDate(_endDateController),
+                onTap: () => _selectDate(_endDateController, context),
                 controller: _endDateController,
                 validator: dateValidator,
               ),
@@ -123,7 +134,7 @@ class _CreatePeriodFormState extends State<CreatePeriodForm> {
                   },
                   minWidth: 80,
                   child: const Text(
-                    "Crear",
+                    "Aceptar",
                     style: TextStyle(
                       color: Colors.white,
                     ),
@@ -143,7 +154,8 @@ class _CreatePeriodFormState extends State<CreatePeriodForm> {
     return DateTime(parts[0], parts[1], parts[2]);
   }
 
-  Future<void> _selectDate(TextEditingController controller) async {
+  Future<void> _selectDate(
+      TextEditingController controller, BuildContext context) async {
     DateTime? pickedDate = await pickDate(context);
 
     if (pickedDate != null) {

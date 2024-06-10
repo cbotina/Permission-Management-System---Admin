@@ -60,16 +60,18 @@ List<DataRow> getPeriodsRows(List<Period> periods) {
             cells: [
               tableCell(Text(period.name), MainAxisAlignment.center),
               tableCell(
-                Text(DateFormat.yMMMM().format(period.startDate).toUpperCase()),
+                Text(
+                  DateFormat.yMMMMd().format(period.startDate).toUpperCase(),
+                ),
                 MainAxisAlignment.center,
               ),
               tableCell(
-                Text(DateFormat.yMMMM().format(period.endDate).toUpperCase()),
+                Text(DateFormat.yMMMMd().format(period.endDate).toUpperCase()),
                 MainAxisAlignment.center,
               ),
               tableCell(
                 PeriodActionButtons(period: period),
-                MainAxisAlignment.end,
+                MainAxisAlignment.center,
               ),
             ],
           ))

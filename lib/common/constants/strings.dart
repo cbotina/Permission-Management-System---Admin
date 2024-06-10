@@ -14,4 +14,5 @@ class Strings {
   static const requiredField = 'Este campo es requerido';
   static const maxCharsAllowed =
       'El valor ingresado excede el límite de caracteres';
+  static const mustConfirm = 'Se debe confimar la eliminación';
 }

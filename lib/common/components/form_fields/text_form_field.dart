@@ -10,17 +10,19 @@ class OutlinedTextFormField extends StatelessWidget {
   final int? maxLines;
   final bool isPassword;
   final double borderRadius;
+  final String hint;
 
   const OutlinedTextFormField({
     super.key,
     this.initialValue,
-    required this.label,
+    this.label = '',
     this.controller,
     this.isNumberField = false,
     this.validator,
     this.maxLines,
     this.isPassword = false,
     this.borderRadius = 8,
+    this.hint = '',
   });
 
   @override
@@ -34,9 +36,14 @@ class OutlinedTextFormField extends StatelessWidget {
       obscureText: isPassword,
       enableSuggestions: false,
       autocorrect: false,
+      autofillHints: hint.isNotEmpty ? [hint] : null,
+      showCursor: true,
       decoration: InputDecoration(
+        hintText: hint,
+        hintStyle:
+            const TextStyle(color: Colors.grey, fontStyle: FontStyle.italic),
         isDense: true,
-        label: Text(label),
+        label: label.isEmpty ? null : Text(label),
         contentPadding:
             const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
         labelStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(

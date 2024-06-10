@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pms_admin/common/components/icon_buttons/delete_icon_button.dart';
 import 'package:pms_admin/features/periods/domain/models/period.dart';
+import 'package:pms_admin/features/periods/presentation/widgets/components/forms/delete_period_form.dart';
 
 class DeletePeriodIconButton extends StatelessWidget {
   final Period period;
@@ -21,11 +22,7 @@ class DeletePeriodIconButton extends StatelessWidget {
             context: context,
             builder: (context) {
               return AlertDialog(
-                title: Text(
-                  "Eliminar Periodo ${period.name}",
-                  style: Theme.of(context).textTheme.titleLarge,
-                  textAlign: TextAlign.center,
-                ),
+                content: DeletePeriodForm(period: period),
               );
             },
           );
