@@ -9,10 +9,10 @@ import 'package:pms_admin/pages/drawer_pages/stats.dart';
 import 'package:pms_admin/pages/drawer_pages/students.dart';
 import 'package:pms_admin/pages/drawer_pages/subjects.dart';
 import 'package:pms_admin/pages/drawer_pages/teachers.dart';
-import 'package:pms_admin/pages/drawer_pages/time_slots.dart';
+import 'package:pms_admin/pages/drawer_pages/time_slots_page.dart';
 
 class SelectedPageNameNotifier extends StateNotifier<String> {
-  SelectedPageNameNotifier() : super(Strings.periods);
+  SelectedPageNameNotifier() : super(Strings.timeSlots);
   void setPage(String pageName) {
     state = pageName;
   }

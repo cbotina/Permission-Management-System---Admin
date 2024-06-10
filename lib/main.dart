@@ -22,10 +22,6 @@ class MyApp extends StatelessWidget {
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
       ],
-      supportedLocales: const [
-        Locale('en'),
-        Locale('fr'),
-      ],
       title: 'Sistema Gestor de Permisos - PFC',
       debugShowCheckedModeBanner: false,
       theme: lightTheme,
