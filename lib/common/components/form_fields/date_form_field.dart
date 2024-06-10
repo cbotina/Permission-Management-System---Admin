@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class OutlinedTextFormField extends StatelessWidget {
+class DateFormField extends StatelessWidget {
   final String? initialValue;
   final String label;
   final bool isNumberField;
@@ -10,8 +10,9 @@ class OutlinedTextFormField extends StatelessWidget {
   final int? maxLines;
   final bool isPassword;
   final double borderRadius;
+  final VoidCallback onTap;
 
-  const OutlinedTextFormField({
+  const DateFormField({
     super.key,
     this.initialValue,
     required this.label,
@@ -21,22 +22,29 @@ class OutlinedTextFormField extends StatelessWidget {
     this.maxLines,
     this.isPassword = false,
     this.borderRadius = 8,
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      maxLines: maxLines,
+      onTap: onTap,
       autovalidateMode: AutovalidateMode.onUserInteraction,
+      maxLines: 1,
       controller: controller,
       initialValue: initialValue,
       style: Theme.of(context).textTheme.bodyMedium,
       obscureText: isPassword,
       enableSuggestions: false,
       autocorrect: false,
+      readOnly: true,
       decoration: InputDecoration(
         isDense: true,
         label: Text(label),
+        prefixIcon: Icon(
+          Icons.date_range,
+          color: Theme.of(context).colorScheme.primary,
+        ),
         contentPadding:
             const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
         labelStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(

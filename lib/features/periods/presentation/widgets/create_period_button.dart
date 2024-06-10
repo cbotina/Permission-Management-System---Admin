@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pms_admin/common/components/buttons/primary_button.dart';
+import 'package:pms_admin/features/periods/presentation/widgets/components/forms/create_period_form.dart';
 
 class CreatePeriodButton extends StatelessWidget {
   const CreatePeriodButton({super.key});
@@ -28,12 +29,8 @@ class CreatePeriodButton extends StatelessWidget {
         showDialog(
           context: context,
           builder: (context) {
-            return AlertDialog(
-              title: Text(
-                "Crear Periodo",
-                style: Theme.of(context).textTheme.titleLarge,
-                textAlign: TextAlign.center,
-              ),
+            return const AlertDialog(
+              content: CreatePeriodForm(),
             );
           },
         );

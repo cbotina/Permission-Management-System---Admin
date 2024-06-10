@@ -73,13 +73,13 @@ final lightTheme = ThemeData(
   //     color: Colors.white,
   //   ),
   // ),
-  // dialogTheme: DialogTheme(
-  //   shape: RoundedRectangleBorder(
-  //     borderRadius: BorderRadius.circular(15),
-  //   ),
-  //   elevation: 3,
-  //   shadowColor: Colors.black,
-  // ),
+  dialogTheme: DialogTheme(
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(10),
+    ),
+    elevation: 3,
+    shadowColor: Colors.black,
+  ),
   // cardTheme: CardTheme(
   //   elevation: 13,
   //   shadowColor: Colors.black,
