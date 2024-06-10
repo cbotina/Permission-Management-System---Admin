@@ -1,0 +1,14 @@
+import 'package:flutter/foundation.dart';
+
+@immutable
+class Strings {
+  static const periods = 'Periodos';
+  static const timeSlots = 'Franjas';
+  static const subjects = 'Materias';
+  static const teachers = 'Docentes';
+  static const groups = 'Grupos';
+  static const students = 'Estudiantes';
+  static const permissionRequests = 'Solicitudes de permiso';
+  static const permissionRegistry = 'Registro de permisos';
+  static const stats = 'Estadísiticas';
+}
