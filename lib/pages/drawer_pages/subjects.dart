@@ -6,6 +6,8 @@ class Subjects extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(child: Text("subjects"));
+    return const Center(
+      child: Text("Materias"),
+    );
   }
 }

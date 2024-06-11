@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pms_admin/common/components/icon_buttons/delete_icon_button.dart';
 import 'package:pms_admin/features/time_slots/domain/models/time_slot.dart';
+import 'package:pms_admin/features/time_slots/presentation/widgets/components/forms/delete_time_slot_form.dart';
 
 class DeleteTimeSlotIconButton extends StatelessWidget {
   final TimeSlot timeSlot;
@@ -20,7 +21,9 @@ class DeleteTimeSlotIconButton extends StatelessWidget {
           showDialog(
             context: context,
             builder: (context) {
-              return const AlertDialog();
+              return AlertDialog(
+                content: DeleteTimeSlotForm(timeSlot: timeSlot),
+              );
             },
           );
         });

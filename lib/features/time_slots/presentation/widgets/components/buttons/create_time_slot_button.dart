@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pms_admin/common/components/buttons/primary_button.dart';
+import 'package:pms_admin/features/time_slots/presentation/widgets/components/forms/create_time_slot_form.dart';
 
 class CreateTimeSlotButton extends StatelessWidget {
   const CreateTimeSlotButton({super.key});
@@ -29,7 +30,7 @@ class CreateTimeSlotButton extends StatelessWidget {
           context: context,
           builder: (context) {
             return const AlertDialog(
-              title: Text("Crear Franja"),
+              content: CreateTimeSlotForm(),
             );
           },
         );
