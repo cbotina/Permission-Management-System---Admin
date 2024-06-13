@@ -7,10 +7,14 @@ class PaginationWidget extends StatelessWidget {
     super.key,
     required this.totalPages,
     required this.currentPage,
+    required this.onForward,
+    required this.onBack,
   });
 
   final int totalPages;
   final int currentPage;
+  final VoidCallback onForward;
+  final VoidCallback onBack;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +28,7 @@ class PaginationWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           GoBackButton(
-            onTap: () {},
+            onTap: onBack,
             enabled: !isFirstPage,
           ),
           Text(
@@ -34,7 +38,7 @@ class PaginationWidget extends StatelessWidget {
             ),
           ),
           GoForwardButton(
-            onTap: () {},
+            onTap: onForward,
             enabled: !isLastPage,
           ),
         ],

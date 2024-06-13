@@ -12,7 +12,7 @@ class GoForwardButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      onPressed: enabled ? () {} : null,
+      onPressed: enabled ? onTap : null,
       icon: Icon(
         Icons.arrow_forward_ios,
         color: enabled

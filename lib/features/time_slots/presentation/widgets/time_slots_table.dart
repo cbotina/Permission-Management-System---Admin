@@ -34,9 +34,11 @@ class _PeriodsPageState extends ConsumerState<TimeSlotsTable> {
                 rows: getPeriodsRows(data, context),
               ),
             ),
-            const PaginationWidget(
+            PaginationWidget(
               totalPages: 3,
               currentPage: 1,
+              onBack: () {},
+              onForward: () {},
             ),
           ],
         );

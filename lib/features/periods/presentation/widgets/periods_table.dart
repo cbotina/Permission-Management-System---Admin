@@ -17,26 +17,39 @@ class PeriodsTable extends ConsumerStatefulWidget {
 }
 
 class _PeriodsPageState extends ConsumerState<PeriodsTable> {
+  int page = 1;
+
   @override
   Widget build(BuildContext context) {
-    final periods = ref.watch(periodsProvider);
+    final periods = ref.watch(periodsFamilyProvider(page));
 
     return periods.when(
       data: (data) {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            SizedBox(
+            Container(
               height: 45 * 11,
+              color: Colors.white,
               child: TableWidget(
                 headerColor: Theme.of(context).colorScheme.primary,
                 columns: periodsColumns,
-                rows: getPeriodsRows(data),
+                rows: getPeriodsRows(data.items),
               ),
             ),
-            const PaginationWidget(
-              totalPages: 3,
-              currentPage: 1,
+            PaginationWidget(
+              totalPages: data.meta.totalPages,
+              currentPage: data.meta.currentPage,
+              onForward: () {
+                setState(() {
+                  page = page + 1;
+                });
+              },
+              onBack: () {
+                setState(() {
+                  page = page - 1;
+                });
+              },
             ),
           ],
         );

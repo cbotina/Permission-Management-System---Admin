@@ -12,7 +12,7 @@ class GoBackButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      onPressed: enabled ? () {} : null,
+      onPressed: enabled ? onTap : null,
       icon: Icon(
         Icons.arrow_back_ios,
         color: enabled

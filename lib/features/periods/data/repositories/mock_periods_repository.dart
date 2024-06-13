@@ -1,3 +1,4 @@
+import 'package:pms_admin/common/models/paginated_response.dart';
 import 'package:pms_admin/features/periods/data/abstract_repositories/periods_repository.dart';
 import 'package:pms_admin/features/periods/domain/models/period.dart';
 
@@ -7,12 +8,18 @@ class MockPeriodsRepository implements IPeriodsRepository {
     const Duration(seconds: 2);
     return mockPeriods;
   }
+
+  @override
+  Future<PaginatedResponse<Period>> getPage(int page) {
+    // TODO: implement getPage
+    throw UnimplementedError();
+  }
 }
 
 final List<Period> mockPeriods = [
   Period(
     id: 1,
-    name: '2022-A',
+    name: 'TEST-A',
     startDate: DateTime(2022, 1),
     endDate: DateTime(2022, 6),
   ),
