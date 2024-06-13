@@ -17,9 +17,10 @@ class TimeSlotsTable extends ConsumerStatefulWidget {
 }
 
 class _PeriodsPageState extends ConsumerState<TimeSlotsTable> {
+  int page = 1;
   @override
   Widget build(BuildContext context) {
-    final timeSlots = ref.watch(timeSlotsProvider);
+    final timeSlots = ref.watch(timeSlotsFamilyProvider(page));
 
     return timeSlots.when(
       data: (data) {
@@ -31,14 +32,22 @@ class _PeriodsPageState extends ConsumerState<TimeSlotsTable> {
               child: TableWidget(
                 headerColor: Theme.of(context).colorScheme.primary,
                 columns: periodsColumns,
-                rows: getPeriodsRows(data, context),
+                rows: getPeriodsRows(data.items, context),
               ),
             ),
             PaginationWidget(
-              totalPages: 3,
-              currentPage: 1,
-              onBack: () {},
-              onForward: () {},
+              totalPages: data.meta.totalPages,
+              currentPage: data.meta.currentPage,
+              onForward: () {
+                setState(() {
+                  page = page + 1;
+                });
+              },
+              onBack: () {
+                setState(() {
+                  page = page - 1;
+                });
+              },
             ),
           ],
         );

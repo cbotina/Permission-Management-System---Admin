@@ -11,6 +11,5 @@ final periodsResponseProvider =
 
 final periodsFamilyProvider =
     FutureProvider.family<PaginatedResponse<Period>, int>((ref, page) async {
-  final response = await ref.watch(periodsRepositoryProvider).getPage(page);
-  return response;
+  return await ref.watch(periodsRepositoryProvider).getPage(page);
 });

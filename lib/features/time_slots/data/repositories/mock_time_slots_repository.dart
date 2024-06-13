@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pms_admin/common/models/paginated_response.dart';
 import 'package:pms_admin/features/time_slots/data/abstract_repositories/time_slots_repository.dart';
 import 'package:pms_admin/features/time_slots/domain/models/time_slot.dart';
 
@@ -7,6 +8,12 @@ class MockTimeSlotsRepository implements ITimeSlotsRepository {
   Future<List<TimeSlot>> getAll() async {
     const Duration(seconds: 2);
     return mockTimeSlots;
+  }
+
+  @override
+  Future<PaginatedResponse<TimeSlot>> getPaginated(int periodId, int page) {
+    // TODO: implement getPaginated
+    throw UnimplementedError();
   }
 }
 
