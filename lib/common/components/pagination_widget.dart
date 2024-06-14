@@ -32,14 +32,14 @@ class PaginationWidget extends StatelessWidget {
             enabled: !isFirstPage,
           ),
           Text(
-            "Página $currentPage de $totalPages",
+            "Página $currentPage de ${totalPages == 0 ? 1 : totalPages}",
             style: TextStyle(
               color: Theme.of(context).colorScheme.primary,
             ),
           ),
           GoForwardButton(
             onTap: onForward,
-            enabled: !isLastPage,
+            enabled: !isLastPage && totalPages != 0,
           ),
         ],
       ),

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:pms_admin/common/models/paginated_response.dart';
 import 'package:pms_admin/common/models/response_metadata.dart';
 import 'package:pms_admin/features/time_slots/data/abstract_repositories/time_slots_repository.dart';
+import 'package:pms_admin/features/time_slots/data/dto/create_time_slot_dto.dart';
+import 'package:pms_admin/features/time_slots/data/dto/update_time_slot_dto.dart';
 import 'package:pms_admin/features/time_slots/domain/models/time_slot.dart';
 
 class MockTimeSlotsRepository implements ITimeSlotsRepository {
@@ -19,11 +21,21 @@ class MockTimeSlotsRepository implements ITimeSlotsRepository {
       ),
     );
   }
+
+  @override
+  Future<void> addTimeSlotToPeriod(int periodId, CreateTimeSlotDto dto) async {}
+
+  @override
+  Future<void> delete(int id) async {}
+
+  @override
+  Future<void> update(int id, UpdateTimeSlotDto newValues) async {}
 }
 
 List<TimeSlot> mockTimeSlots = [
   const TimeSlot(
     periodId: 1,
+    id: 1,
     startTime: TimeOfDay(hour: 7, minute: 0),
     endTime: TimeOfDay(hour: 7, minute: 55),
     isAcademic: true,
@@ -31,6 +43,7 @@ List<TimeSlot> mockTimeSlots = [
   ),
   const TimeSlot(
     periodId: 1,
+    id: 1,
     startTime: TimeOfDay(hour: 7, minute: 55),
     endTime: TimeOfDay(hour: 8, minute: 50),
     isAcademic: true,
@@ -38,6 +51,7 @@ List<TimeSlot> mockTimeSlots = [
   ),
   const TimeSlot(
     periodId: 1,
+    id: 1,
     startTime: TimeOfDay(hour: 8, minute: 50),
     endTime: TimeOfDay(hour: 9, minute: 45),
     isAcademic: true,
@@ -45,6 +59,7 @@ List<TimeSlot> mockTimeSlots = [
   ),
   const TimeSlot(
     periodId: 1,
+    id: 1,
     startTime: TimeOfDay(hour: 9, minute: 45),
     endTime: TimeOfDay(hour: 10, minute: 40),
     isAcademic: true,
@@ -52,6 +67,7 @@ List<TimeSlot> mockTimeSlots = [
   ),
   const TimeSlot(
     periodId: 1,
+    id: 1,
     startTime: TimeOfDay(hour: 10, minute: 40),
     endTime: TimeOfDay(hour: 11, minute: 10),
     isAcademic: false,
@@ -59,6 +75,7 @@ List<TimeSlot> mockTimeSlots = [
   ),
   const TimeSlot(
     periodId: 1,
+    id: 1,
     startTime: TimeOfDay(hour: 11, minute: 10),
     endTime: TimeOfDay(hour: 12, minute: 5),
     isAcademic: true,
@@ -66,6 +83,7 @@ List<TimeSlot> mockTimeSlots = [
   ),
   const TimeSlot(
     periodId: 1,
+    id: 1,
     startTime: TimeOfDay(hour: 12, minute: 5),
     endTime: TimeOfDay(hour: 12, minute: 55),
     isAcademic: true,
@@ -73,6 +91,7 @@ List<TimeSlot> mockTimeSlots = [
   ),
   const TimeSlot(
     periodId: 1,
+    id: 1,
     startTime: TimeOfDay(hour: 12, minute: 55),
     endTime: TimeOfDay(hour: 13, minute: 0),
     isAcademic: false,
@@ -80,6 +99,7 @@ List<TimeSlot> mockTimeSlots = [
   ),
   const TimeSlot(
     periodId: 1,
+    id: 1,
     startTime: TimeOfDay(hour: 13, minute: 0),
     endTime: TimeOfDay(hour: 13, minute: 55),
     isAcademic: true,
@@ -87,6 +107,7 @@ List<TimeSlot> mockTimeSlots = [
   ),
   const TimeSlot(
     periodId: 1,
+    id: 1,
     startTime: TimeOfDay(hour: 13, minute: 55),
     endTime: TimeOfDay(hour: 14, minute: 50),
     isAcademic: true,
@@ -94,6 +115,7 @@ List<TimeSlot> mockTimeSlots = [
   ),
   const TimeSlot(
     periodId: 1,
+    id: 1,
     startTime: TimeOfDay(hour: 14, minute: 50),
     endTime: TimeOfDay(hour: 15, minute: 45),
     isAcademic: true,
@@ -101,6 +123,7 @@ List<TimeSlot> mockTimeSlots = [
   ),
   const TimeSlot(
     periodId: 1,
+    id: 1,
     startTime: TimeOfDay(hour: 15, minute: 45),
     endTime: TimeOfDay(hour: 16, minute: 40),
     isAcademic: true,
@@ -108,6 +131,7 @@ List<TimeSlot> mockTimeSlots = [
   ),
   const TimeSlot(
     periodId: 1,
+    id: 1,
     startTime: TimeOfDay(hour: 16, minute: 40),
     endTime: TimeOfDay(hour: 17, minute: 35),
     isAcademic: true,
@@ -115,6 +139,7 @@ List<TimeSlot> mockTimeSlots = [
   ),
   const TimeSlot(
     periodId: 1,
+    id: 1,
     startTime: TimeOfDay(hour: 17, minute: 35),
     endTime: TimeOfDay(hour: 18, minute: 30),
     isAcademic: true,

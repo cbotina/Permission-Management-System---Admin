@@ -7,6 +7,7 @@ part 'time_slot.freezed.dart';
 @Freezed()
 class TimeSlot with _$TimeSlot {
   const factory TimeSlot({
+    required int id,
     required int periodId,
     required String tag,
     required TimeOfDay startTime,
@@ -18,6 +19,7 @@ class TimeSlot with _$TimeSlot {
     // print(json);
     return TimeSlot(
       periodId: 1,
+      id: json['id'],
       tag: json['label'],
       startTime: json['startTime'].toString().toDayTime(),
       // startTime: TimeOfDay.now(),

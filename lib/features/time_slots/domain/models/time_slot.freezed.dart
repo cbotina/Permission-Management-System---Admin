@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$TimeSlot {
+  int get id => throw _privateConstructorUsedError;
   int get periodId => throw _privateConstructorUsedError;
   String get tag => throw _privateConstructorUsedError;
   TimeOfDay get startTime => throw _privateConstructorUsedError;
@@ -33,7 +34,8 @@ abstract class $TimeSlotCopyWith<$Res> {
       _$TimeSlotCopyWithImpl<$Res, TimeSlot>;
   @useResult
   $Res call(
-      {int periodId,
+      {int id,
+      int periodId,
       String tag,
       TimeOfDay startTime,
       TimeOfDay endTime,
@@ -53,6 +55,7 @@ class _$TimeSlotCopyWithImpl<$Res, $Val extends TimeSlot>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? periodId = null,
     Object? tag = null,
     Object? startTime = null,
@@ -60,6 +63,10 @@ class _$TimeSlotCopyWithImpl<$Res, $Val extends TimeSlot>
     Object? isAcademic = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       periodId: null == periodId
           ? _value.periodId
           : periodId // ignore: cast_nullable_to_non_nullable
@@ -93,7 +100,8 @@ abstract class _$$TimeSlotImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int periodId,
+      {int id,
+      int periodId,
       String tag,
       TimeOfDay startTime,
       TimeOfDay endTime,
@@ -111,6 +119,7 @@ class __$$TimeSlotImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? periodId = null,
     Object? tag = null,
     Object? startTime = null,
@@ -118,6 +127,10 @@ class __$$TimeSlotImplCopyWithImpl<$Res>
     Object? isAcademic = null,
   }) {
     return _then(_$TimeSlotImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       periodId: null == periodId
           ? _value.periodId
           : periodId // ignore: cast_nullable_to_non_nullable
@@ -146,12 +159,15 @@ class __$$TimeSlotImplCopyWithImpl<$Res>
 
 class _$TimeSlotImpl implements _TimeSlot {
   const _$TimeSlotImpl(
-      {required this.periodId,
+      {required this.id,
+      required this.periodId,
       required this.tag,
       required this.startTime,
       required this.endTime,
       required this.isAcademic});
 
+  @override
+  final int id;
   @override
   final int periodId;
   @override
@@ -165,7 +181,7 @@ class _$TimeSlotImpl implements _TimeSlot {
 
   @override
   String toString() {
-    return 'TimeSlot(periodId: $periodId, tag: $tag, startTime: $startTime, endTime: $endTime, isAcademic: $isAcademic)';
+    return 'TimeSlot(id: $id, periodId: $periodId, tag: $tag, startTime: $startTime, endTime: $endTime, isAcademic: $isAcademic)';
   }
 
   @override
@@ -173,6 +189,7 @@ class _$TimeSlotImpl implements _TimeSlot {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TimeSlotImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.periodId, periodId) ||
                 other.periodId == periodId) &&
             (identical(other.tag, tag) || other.tag == tag) &&
@@ -184,8 +201,8 @@ class _$TimeSlotImpl implements _TimeSlot {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, periodId, tag, startTime, endTime, isAcademic);
+  int get hashCode => Object.hash(
+      runtimeType, id, periodId, tag, startTime, endTime, isAcademic);
 
   @JsonKey(ignore: true)
   @override
@@ -196,12 +213,15 @@ class _$TimeSlotImpl implements _TimeSlot {
 
 abstract class _TimeSlot implements TimeSlot {
   const factory _TimeSlot(
-      {required final int periodId,
+      {required final int id,
+      required final int periodId,
       required final String tag,
       required final TimeOfDay startTime,
       required final TimeOfDay endTime,
       required final bool isAcademic}) = _$TimeSlotImpl;
 
+  @override
+  int get id;
   @override
   int get periodId;
   @override

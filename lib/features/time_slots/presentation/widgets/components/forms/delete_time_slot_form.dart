@@ -1,9 +1,7 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:pms_admin/common/components/buttons/primary_button.dart';
 import 'package:pms_admin/common/components/buttons/secondary_button.dart';
 import 'package:pms_admin/features/time_slots/domain/models/time_slot.dart';
+import 'package:pms_admin/features/time_slots/presentation/widgets/components/buttons/form_buttons/detele_time_slot_form_button.dart';
 
 class DeleteTimeSlotForm extends StatefulWidget {
   final TimeSlot timeSlot;
@@ -54,22 +52,9 @@ class _DeleteTimeSlotFormState extends State<DeleteTimeSlotForm> {
               const SizedBox(
                 width: 15,
               ),
-              PrimaryButton(
-                onTap: () {
-                  log("Eliminado!");
-                  Navigator.of(context).pop();
-                },
-                minWidth: 80,
-                backgroundColor: Colors.pink,
-                hoverColor: Colors.pinkAccent,
-                child: const Text(
-                  "Eliminar",
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-              ),
+              DeleteTimeSlotFormButton(
+                timeSlotId: widget.timeSlot.id,
+              )
             ],
           ),
         ],

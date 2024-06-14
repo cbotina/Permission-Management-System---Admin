@@ -1,11 +1,9 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:pms_admin/common/components/buttons/primary_button.dart';
 import 'package:pms_admin/common/components/buttons/secondary_button.dart';
 import 'package:pms_admin/common/components/form_fields/hour_form_field.dart';
 import 'package:pms_admin/common/components/form_fields/text_form_field.dart';
 import 'package:pms_admin/features/time_slots/domain/models/time_slot.dart';
+import 'package:pms_admin/features/time_slots/presentation/widgets/components/buttons/form_buttons/update_time_slot_form_button.dart';
 import 'package:pms_admin/features/time_slots/presentation/widgets/components/utils/time_picker.dart';
 import 'package:pms_admin/features/time_slots/presentation/widgets/components/validators/time_slot_label_validator.dart';
 import 'package:pms_admin/features/time_slots/presentation/widgets/components/validators/time_validator.dart';
@@ -14,11 +12,13 @@ class EditTimeSlotForm extends StatefulWidget {
   final TimeSlot timeSlot;
   final String startTimeText;
   final String endTimeText;
+  final bool isRestTime;
   const EditTimeSlotForm({
     super.key,
     required this.timeSlot,
     required this.startTimeText,
     required this.endTimeText,
+    required this.isRestTime,
   });
 
   @override
@@ -47,6 +47,8 @@ class _EditTimeSlotFormState extends State<EditTimeSlotForm> {
 
     _startTimeController.text = widget.startTimeText;
     _endTimeController.text = widget.endTimeText;
+
+    isRestTime = widget.isRestTime;
 
     super.initState();
   }
@@ -147,29 +149,37 @@ class _EditTimeSlotFormState extends State<EditTimeSlotForm> {
                 const SizedBox(
                   width: 15,
                 ),
-                PrimaryButton(
-                  onTap: () {
-                    if (_formKey.currentState!.validate()) {
-                      final timeSlot = TimeSlot(
-                        periodId: 1,
-                        tag: _labelController.text,
-                        startTime: _startTime,
-                        endTime: _endTime,
-                        isAcademic: !isRestTime,
-                      );
-
-                      log(timeSlot.toString());
-                    }
-                  },
-                  minWidth: 80,
-                  child: const Text(
-                    "Crear",
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
+                UpdateTimeSlotFormButton(
+                  formKey: _formKey,
+                  timeSlotId: widget.timeSlot.id,
+                  labelController: _labelController,
+                  startTime: _startTime,
+                  endTime: _endTime,
+                  isAcademic: !isRestTime,
                 ),
+                // PrimaryButton(
+                //   onTap: () {
+                //     if (_formKey.currentState!.validate()) {
+                //       final timeSlot = TimeSlot(
+                //         periodId: 1,
+                //         tag: _labelController.text,
+                //         startTime: _startTime,
+                //         endTime: _endTime,
+                //         isAcademic: !isRestTime,
+                //       );
+
+                //       log(timeSlot.toString());
+                //     }
+                //   },
+                //   minWidth: 80,
+                //   child: const Text(
+                //     "Crear",
+                //     style: TextStyle(
+                //       color: Colors.white,
+                //     ),
+                //     textAlign: TextAlign.center,
+                //   ),
+                // ),
               ],
             ),
           ],

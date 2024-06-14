@@ -26,6 +26,7 @@ class EditTimeSlotIconButton extends StatelessWidget {
                 timeSlot: timeSlot,
                 startTimeText: timeSlot.startTime.format(context),
                 endTimeText: timeSlot.endTime.format(context),
+                isRestTime: !timeSlot.isAcademic,
               ),
             );
           },
