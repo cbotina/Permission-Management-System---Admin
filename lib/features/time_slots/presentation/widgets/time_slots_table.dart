@@ -20,14 +20,15 @@ class _PeriodsPageState extends ConsumerState<TimeSlotsTable> {
   int page = 1;
   @override
   Widget build(BuildContext context) {
-    final timeSlots = ref.watch(timeSlotsFamilyProvider(page));
+    final timeSlots = ref.watch(paginatedTimeSlotsProvider(page));
 
     return timeSlots.when(
       data: (data) {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            SizedBox(
+            Container(
+              color: Colors.white,
               height: 45 * 11,
               child: TableWidget(
                 headerColor: Theme.of(context).colorScheme.primary,

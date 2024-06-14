@@ -1,18 +1,27 @@
 import 'package:pms_admin/common/models/paginated_response.dart';
+import 'package:pms_admin/common/models/response_metadata.dart';
 import 'package:pms_admin/features/periods/data/abstract_repositories/periods_repository.dart';
 import 'package:pms_admin/features/periods/domain/models/period.dart';
 
 class MockPeriodsRepository implements IPeriodsRepository {
   @override
-  Future<List<Period>> getAll() async {
+  Future<List<Period>> getAllPeriods() async {
     const Duration(seconds: 2);
     return mockPeriods;
   }
 
   @override
-  Future<PaginatedResponse<Period>> getPage(int page) {
-    // TODO: implement getPage
-    throw UnimplementedError();
+  Future<PaginatedResponse<Period>> getPaginatedPeriods(int page) async {
+    return PaginatedResponse(
+      items: mockPeriods.sublist(0, 9),
+      meta: const ResponseMetadata(
+        totalItems: 10,
+        itemCount: 10,
+        itemsPerPage: 10,
+        totalPages: 1,
+        currentPage: 1,
+      ),
+    );
   }
 }
 

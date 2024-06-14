@@ -3,13 +3,12 @@ import 'package:pms_admin/common/models/paginated_response.dart';
 import 'package:pms_admin/features/periods/domain/models/period.dart';
 import 'package:pms_admin/providers/repository_providers.dart';
 
-final periodsResponseProvider =
+final allPeriodsProvider =
     FutureProvider<PaginatedResponse<Period>>((ref) async {
-  final response = await ref.watch(periodsRepositoryProvider).getPage(4);
-  return response;
+  return await ref.watch(periodsRepositoryProvider).getPaginatedPeriods(4);
 });
 
-final periodsFamilyProvider =
+final paginatedPeriodsProvider =
     FutureProvider.family<PaginatedResponse<Period>, int>((ref, page) async {
-  return await ref.watch(periodsRepositoryProvider).getPage(page);
+  return await ref.watch(periodsRepositoryProvider).getPaginatedPeriods(page);
 });

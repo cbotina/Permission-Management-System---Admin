@@ -9,13 +9,7 @@ import 'package:http/http.dart' as http;
 
 class ImplTimeSlotsRepository implements ITimeSlotsRepository {
   @override
-  Future<List<TimeSlot>> getAll() {
-    // TODO: implement getAll
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<PaginatedResponse<TimeSlot>> getPaginated(
+  Future<PaginatedResponse<TimeSlot>> getPaginatedTimeSlots(
       int periodId, int page) async {
     final uri = Uri.http(
       ENV.backendUrl,

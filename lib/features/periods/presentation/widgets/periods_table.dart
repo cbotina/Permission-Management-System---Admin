@@ -21,7 +21,7 @@ class _PeriodsPageState extends ConsumerState<PeriodsTable> {
 
   @override
   Widget build(BuildContext context) {
-    final periods = ref.watch(periodsFamilyProvider(page));
+    final periods = ref.watch(paginatedPeriodsProvider(page));
 
     return periods.when(
       data: (data) {

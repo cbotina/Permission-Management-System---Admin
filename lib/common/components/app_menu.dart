@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pms_admin/common/components/drawer_item.dart';
 import 'package:pms_admin/common/constants/strings.dart';
+import 'package:pms_admin/features/periods/presentation/widgets/components/buttons/change_active_period_button.dart';
 
 class AppMenu extends StatelessWidget {
   const AppMenu({super.key});
@@ -38,62 +39,10 @@ class AppMenu extends StatelessWidget {
                     ),
                   ],
                 ),
+                const ChangeActivePeriodButton(),
               ],
             ),
           ),
-
-          // Row(
-          //   mainAxisSize: MainAxisSize.min,
-          //   children: [
-          //     Container(
-          //       width: 50,
-          //       height: 50,
-          //       decoration: BoxDecoration(
-          //         borderRadius: BorderRadius.circular(12),
-          //         color: Theme.of(context).colorScheme.primary,
-          //         border: Border.all(
-          //           color: Theme.of(context).colorScheme.primary,
-          //           width: 2,
-          //         ),
-          //       ),
-          //       child: ClipRRect(
-          //         borderRadius: BorderRadius.circular(8),
-          //         child: Image.network(
-          //           'https://avatars.githubusercontent.com/u/120812443?v=4',
-          //           width: 44,
-          //           height: 44,
-          //         ),
-          //       ),
-          //     ),
-          //     const SizedBox(width: 12),
-          //     Column(
-          //       crossAxisAlignment: CrossAxisAlignment.start,
-          //       mainAxisSize: MainAxisSize.min,
-          //       children: [
-          //         SizedBox(
-          //           width: 150,
-          //           child: Text(
-          //             "Carlos Alberto Botina Carpio",
-          //             style: Theme.of(context)
-          //                 .textTheme
-          //                 .bodyLarge!
-          //                 .copyWith(
-          //                     fontSize: 16, fontWeight: FontWeight.w600),
-          //             overflow: TextOverflow.ellipsis,
-          //           ),
-          //         ),
-          //         Text(
-          //           "Administrador",
-          //           style: Theme.of(context)
-          //               .textTheme
-          //               .labelMedium!
-          //               .copyWith(
-          //                   fontSize: 14, fontWeight: FontWeight.w500),
-          //         ),
-          //       ],
-          //     )
-          //   ],
-          // ),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(8),

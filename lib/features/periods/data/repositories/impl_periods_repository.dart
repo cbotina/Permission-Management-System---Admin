@@ -9,7 +9,7 @@ import 'package:http/http.dart' as http;
 
 class ImplPeriodsRepository implements IPeriodsRepository {
   @override
-  Future<List<Period>> getAll() async {
+  Future<List<Period>> getAllPeriods() async {
     final uri = Uri.http(
       ENV.backendUrl,
       '/periods/',
@@ -27,7 +27,7 @@ class ImplPeriodsRepository implements IPeriodsRepository {
   }
 
   @override
-  Future<PaginatedResponse<Period>> getPage(int page) async {
+  Future<PaginatedResponse<Period>> getPaginatedPeriods(int page) async {
     final uri = Uri.http(
       ENV.backendUrl,
       '/periods/',

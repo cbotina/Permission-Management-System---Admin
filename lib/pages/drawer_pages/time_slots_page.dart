@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pms_admin/common/components/form_fields/search_bar.dart';
 import 'package:pms_admin/common/components/page_title.dart';
 import 'package:pms_admin/common/components/scrollable_page.dart';
+import 'package:pms_admin/common/providers/active_period_provider.dart';
 import 'package:pms_admin/features/time_slots/presentation/widgets/components/buttons/create_time_slot_button.dart';
 import 'package:pms_admin/features/time_slots/presentation/widgets/time_slots_table.dart';
 
@@ -10,22 +12,25 @@ class TimeSlots extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const ScrollablePage(
+    return ScrollablePage(
       children: [
         Row(
           children: [
-            PageTitle(
-              title: 'Franjas Horarias 2024-A',
-              iconData: Icons.timer_rounded,
-            ),
-            SizedBox(width: 30),
-            Expanded(child: OutlinedSearchBar(label: "Buscar")),
-            SizedBox(width: 30),
-            CreateTimeSlotButton(),
+            Consumer(builder: (context, ref, child) {
+              final activePeriod = ref.watch(activePeriodProvider);
+              return PageTitle(
+                title: 'Franjas Horarias $activePeriod',
+                iconData: Icons.timer_rounded,
+              );
+            }),
+            const SizedBox(width: 30),
+            const Expanded(child: OutlinedSearchBar(label: "Buscar")),
+            const SizedBox(width: 30),
+            const CreateTimeSlotButton(),
           ],
         ),
-        SizedBox(height: 25),
-        TimeSlotsTable()
+        const SizedBox(height: 25),
+        const TimeSlotsTable()
       ],
     );
   }
