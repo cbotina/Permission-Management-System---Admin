@@ -1,10 +1,9 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:pms_admin/common/components/buttons/primary_button.dart';
 import 'package:pms_admin/common/components/buttons/secondary_button.dart';
 import 'package:pms_admin/common/components/form_fields/text_form_field.dart';
 import 'package:pms_admin/features/periods/domain/models/period.dart';
+import 'package:pms_admin/features/periods/presentation/widgets/components/buttons/form_buttons/delete_period_form_button.dart';
 import 'package:pms_admin/features/periods/presentation/widgets/components/validators/delete_period_confirmation_validator.dart';
 
 class DeletePeriodForm extends StatefulWidget {
@@ -127,24 +126,11 @@ class _DeletePeriodFormState extends State<DeletePeriodForm> {
                 const SizedBox(
                   width: 15,
                 ),
-                PrimaryButton(
-                  onTap: () {
-                    if (_formKey.currentState!.validate()) {
-                      log("Eliminado!");
-                    }
-                  },
-                  minWidth: 80,
-                  backgroundColor: Colors.pink,
-                  hoverColor: Colors.pinkAccent,
-                  enabled: confirmed,
-                  child: const Text(
-                    "Eliminar",
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
+                DeletePeriodFormButton(
+                  formKey: _formKey,
+                  confirmed: confirmed,
+                  periodId: widget.period.id,
+                )
               ],
             ),
           ],
