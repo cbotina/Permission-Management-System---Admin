@@ -11,8 +11,14 @@ import 'package:pms_admin/common/utils/query_params_builder.dart';
 class ImplTimeSlotsRepository implements ITimeSlotsRepository {
   @override
   Future<PaginatedResponse<TimeSlot>> getPaginatedTimeSlots(
-      int periodId, int page) async {
-    final queryParams = buildQueryParams({'page': '$page'});
+    int periodId,
+    int page,
+    String searchQuery,
+  ) async {
+    final queryParams = buildQueryParams({
+      'page': '$page',
+      'search': searchQuery,
+    });
 
     final uri = Uri.parse(
         '${ENV.backendUrl}/periods/$periodId/time-slots/$queryParams');

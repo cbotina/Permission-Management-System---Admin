@@ -28,7 +28,6 @@ class OutlinedSearchBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       maxLines: maxLines,
-      // autovalidateMode: AutovalidateMode.onUserInteraction,
       controller: controller,
       initialValue: initialValue,
       style: Theme.of(context).textTheme.bodyMedium,

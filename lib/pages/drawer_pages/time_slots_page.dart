@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:pms_admin/common/components/form_fields/search_bar.dart';
 import 'package:pms_admin/common/components/page_title.dart';
 import 'package:pms_admin/common/components/scrollable_page.dart';
+import 'package:pms_admin/common/components/search_bar.dart';
 import 'package:pms_admin/common/providers/active_period_provider.dart';
 import 'package:pms_admin/features/time_slots/presentation/widgets/components/buttons/create_time_slot_button.dart';
 import 'package:pms_admin/features/time_slots/presentation/widgets/time_slots_table.dart';
@@ -24,7 +24,7 @@ class TimeSlots extends StatelessWidget {
               );
             }),
             const SizedBox(width: 30),
-            const Expanded(child: OutlinedSearchBar(label: "Buscar")),
+            const Expanded(child: CustomSearchBar()),
             const SizedBox(width: 30),
             const CreateTimeSlotButton(),
           ],

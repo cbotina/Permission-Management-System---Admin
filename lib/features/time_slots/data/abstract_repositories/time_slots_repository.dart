@@ -5,5 +5,6 @@ abstract class ITimeSlotsRepository {
   Future<PaginatedResponse<TimeSlot>> getPaginatedTimeSlots(
     int periodId,
     int page,
+    String searchQuery,
   );
 }
