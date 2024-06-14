@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:pms_admin/common/environment/environment.dart';
@@ -26,10 +27,18 @@ class ImplPeriodsRepository implements IPeriodsRepository {
   }
 
   @override
-  Future<PaginatedResponse<Period>> getPaginatedPeriods(int page) async {
-    final queryParams = buildQueryParams({'page': '$page'});
+  Future<PaginatedResponse<Period>> getPaginatedPeriods(
+    int page,
+    String searchQuery,
+  ) async {
+    final queryParams = buildQueryParams({
+      'page': '$page',
+      'search': searchQuery,
+    });
 
     final uri = Uri.parse('${ENV.backendUrl}/periods/$queryParams');
+
+    log(uri.toString());
 
     final response = await http.get(uri);
 
