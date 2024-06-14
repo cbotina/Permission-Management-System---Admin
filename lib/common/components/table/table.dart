@@ -27,7 +27,9 @@ class TableWidget extends StatelessWidget {
           bottom: BorderSide(color: Colors.grey.shade300, width: 1.2),
         ),
         dividerThickness: .1,
-        dataRowColor: const WidgetStatePropertyAll(Colors.white),
+        dataRowColor: WidgetStatePropertyAll(
+          Theme.of(context).colorScheme.surfaceBright,
+        ),
         columns: columns,
         rows: rows,
       ),

@@ -5,9 +5,13 @@ final darkTheme = ThemeData(
   useMaterial3: false,
   fontFamily: 'PlusJakartaSans',
   colorScheme: darkColorScheme,
-  appBarTheme: const AppBarTheme(
-    elevation: 0,
-    toolbarHeight: 45,
+  // appBarTheme: const AppBarTheme(
+  //   elevation: 0,
+  //   toolbarHeight: 45,
+  // ),
+  drawerTheme: const DrawerThemeData(
+    width: 250,
+    elevation: 3,
   ),
   // textTheme: const TextTheme(
   //   displaySmall: TextStyle(
@@ -62,20 +66,23 @@ final darkTheme = ThemeData(
   //   ),
   // ),
   // shadowColor: Colors.black.withOpacity(.3),
-  // appBarTheme: const AppBarTheme(
-  //   elevation: 0,
-  //   foregroundColor: Colors.white,
-  //   iconTheme: IconThemeData(
-  //     color: Colors.white,
-  //   ),
-  // ),
-  // dialogTheme: DialogTheme(
-  //   shape: RoundedRectangleBorder(
-  //     borderRadius: BorderRadius.circular(15),
-  //   ),
-  //   elevation: 3,
-  //   shadowColor: Colors.black,
-  // ),
+  appBarTheme: const AppBarTheme(
+    elevation: 0,
+    toolbarHeight: 45,
+    // backgroundColor: darkColorScheme.primary,
+    foregroundColor: Colors.white,
+    iconTheme: IconThemeData(
+      color: Colors.white,
+    ),
+  ),
+  dialogTheme: DialogTheme(
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(10),
+    ),
+    elevation: 3,
+    shadowColor: Colors.black,
+    backgroundColor: darkColorScheme.surface,
+  ),
   // cardTheme: CardTheme(
   //   elevation: 13,
   //   shadowColor: Colors.black,

@@ -19,8 +19,13 @@ const lightColorScheme = ColorScheme(
   onTertiaryContainer: Colors.white,
 
   surfaceTint: null,
-  surface: Color.fromARGB(255, 241, 248, 246),
+  surface: Color.fromARGB(255, 255, 255, 255),
   onSurface: Color(0xff0e0e0e),
+
+  onSurfaceVariant: Color.fromARGB(195, 34, 34, 34),
+
+  primaryFixed: Colors.blue,
+  secondaryFixed: Colors.pink,
 
   surfaceContainerHighest: Colors.white,
   outline: Colors.transparent,

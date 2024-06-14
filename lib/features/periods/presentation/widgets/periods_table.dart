@@ -30,7 +30,7 @@ class _PeriodsPageState extends ConsumerState<PeriodsTable> {
           children: [
             Container(
               height: 45 * 11,
-              color: Colors.white,
+              color: Theme.of(context).colorScheme.surfaceBright,
               child: TableWidget(
                 headerColor: Theme.of(context).colorScheme.primary,
                 columns: periodsColumns,

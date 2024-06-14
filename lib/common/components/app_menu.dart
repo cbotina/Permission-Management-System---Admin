@@ -26,7 +26,7 @@ class AppMenu extends StatelessWidget {
                   "Sistema Gestor de Permisos PFC",
                   style: Theme.of(context).textTheme.titleLarge!.copyWith(
                         fontWeight: FontWeight.w600,
-                        color: Colors.white,
+                        color: Theme.of(context).colorScheme.onPrimary,
                       ),
                   textAlign: TextAlign.center,
                 ),

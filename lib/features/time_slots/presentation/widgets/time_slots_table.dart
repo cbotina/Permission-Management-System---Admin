@@ -28,7 +28,7 @@ class _PeriodsPageState extends ConsumerState<TimeSlotsTable> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Container(
-              color: Colors.white,
+              color: Theme.of(context).colorScheme.surfaceBright,
               height: 45 * 11,
               child: TableWidget(
                 headerColor: Theme.of(context).colorScheme.primary,

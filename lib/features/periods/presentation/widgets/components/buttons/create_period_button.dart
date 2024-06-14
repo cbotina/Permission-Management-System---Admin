@@ -9,17 +9,17 @@ class CreatePeriodButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return PrimaryButton(
       minWidth: 130,
-      child: const Row(
+      child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Icon(
             Icons.add,
-            color: Colors.white,
+            color: Theme.of(context).colorScheme.onPrimary,
           ),
           Text(
             "Crear Periodo",
             style: TextStyle(
-              color: Colors.white,
+              color: Theme.of(context).colorScheme.onPrimary,
               fontWeight: FontWeight.w500,
             ),
           ),

@@ -36,7 +36,7 @@ class EnumDropdownButtonFormField<T> extends StatelessWidget {
         },
       ).toList(),
       onChanged: onSelected,
-      dropdownColor: Colors.white,
+      dropdownColor: Theme.of(context).colorScheme.surface,
       decoration: InputDecoration(
         contentPadding:
             const EdgeInsets.symmetric(vertical: 15, horizontal: 20),

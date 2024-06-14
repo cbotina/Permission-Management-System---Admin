@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 
 const darkColorScheme = ColorScheme(
   brightness: Brightness.dark,
-  primary: Colors.tealAccent,
-  onPrimary: Color.fromARGB(255, 0, 0, 0),
-  secondary: Colors.black, // ribbon
+  primary: Color.fromARGB(255, 51, 158, 147),
+  onPrimary: Colors.white,
+  secondary: Color.fromARGB(255, 255, 222, 182),
   onSecondary: Color(0xff0e0e0e),
   tertiary: Color.fromARGB(255, 132, 255, 243),
   onTertiary: Colors.black,
   error: Color(0xffe6202d),
   onError: Colors.white,
-  primaryContainer: Colors.white,
+  primaryContainer: Colors.teal,
   onPrimaryContainer: Color.fromARGB(255, 245, 245, 245),
 
   secondaryContainer: Colors.white, // google
@@ -19,9 +19,14 @@ const darkColorScheme = ColorScheme(
   onTertiaryContainer: Colors.white,
 
   surface: Color(0xff0F131D),
+  surfaceBright: Color.fromARGB(255, 23, 28, 43),
   onSurface: Color.fromARGB(255, 255, 255, 255),
   surfaceContainerHighest: Color(0xff1A1B27),
   scrim: Colors.transparent,
+  onSurfaceVariant: Color.fromARGB(195, 255, 255, 255),
+
+  primaryFixed: Colors.cyan,
+  secondaryFixed: Colors.pinkAccent,
 
   outline: Colors.transparent,
 );

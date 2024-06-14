@@ -22,7 +22,7 @@ class PaginationWidget extends StatelessWidget {
     final bool isFirstPage = currentPage == 1;
 
     return Container(
-      color: Colors.white,
+      color: Theme.of(context).colorScheme.surfaceContainer,
       height: 40,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,

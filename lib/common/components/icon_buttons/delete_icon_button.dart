@@ -15,7 +15,9 @@ class DeleteIconButton extends StatelessWidget {
       onPressed: enabled ? onTap : null,
       icon: Icon(
         Icons.delete,
-        color: enabled ? Colors.pink : Colors.grey.shade300,
+        color: enabled
+            ? Theme.of(context).colorScheme.secondaryFixed
+            : Colors.grey.shade300,
       ),
       splashRadius: 15,
     );

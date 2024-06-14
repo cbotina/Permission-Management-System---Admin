@@ -12,7 +12,9 @@ class EditIconButton extends StatelessWidget {
       hoverColor: Colors.teal,
       icon: Icon(
         Icons.edit,
-        color: enabled ? Colors.blue : Colors.grey.shade200,
+        color: enabled
+            ? Theme.of(context).colorScheme.primaryFixed
+            : Colors.grey.shade200,
       ),
       splashRadius: 15,
     );

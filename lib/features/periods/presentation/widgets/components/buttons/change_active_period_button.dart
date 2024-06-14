@@ -31,9 +31,9 @@ class ChangeActivePeriodButton extends ConsumerWidget {
         children: [
           Text(activePeriodName),
           const SizedBox(width: 10),
-          const Icon(
+          Icon(
             Icons.info_outline,
-            color: Colors.white,
+            color: Theme.of(context).colorScheme.onPrimary,
             size: 15,
           ),
         ],

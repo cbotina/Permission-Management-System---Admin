@@ -33,9 +33,9 @@ class SearchButton extends StatelessWidget {
           constraints: BoxConstraints(
             minWidth: minWidth ?? 0,
           ),
-          child: const Icon(
+          child: Icon(
             Icons.search,
-            color: Colors.white,
+            color: Theme.of(context).colorScheme.onPrimary,
           ),
         ),
       ),

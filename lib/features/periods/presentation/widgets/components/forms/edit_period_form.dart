@@ -60,7 +60,7 @@ class _EditPeriodFormState extends State<EditPeriodForm> {
         width: 300,
         padding: const EdgeInsets.all(25),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Theme.of(context).colorScheme.surface,
           borderRadius: BorderRadius.circular(14),
         ),
         child: Column(

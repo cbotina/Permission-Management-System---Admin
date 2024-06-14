@@ -45,7 +45,7 @@ class DrawerItem extends ConsumerWidget {
       return isActive
           ? Theme.of(context).colorScheme.secondary
           // : Colors.grey.shade600;
-          : Theme.of(context).colorScheme.primary;
+          : Theme.of(context).colorScheme.onSurfaceVariant;
     }
 
     Color getBackgroundColor(bool isActive) {
