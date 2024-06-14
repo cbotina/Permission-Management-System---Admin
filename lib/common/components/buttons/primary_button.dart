@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pms_admin/common/components/loading/loading_button_indicator.dart';
 
 class PrimaryButton extends StatelessWidget {
   final Widget child;
@@ -7,6 +8,7 @@ class PrimaryButton extends StatelessWidget {
   final Color? backgroundColor;
   final Color? hoverColor;
   final bool enabled;
+  final bool isLoading;
   const PrimaryButton({
     super.key,
     required this.child,
@@ -15,13 +17,14 @@ class PrimaryButton extends StatelessWidget {
     this.backgroundColor,
     this.hoverColor,
     this.enabled = true,
+    this.isLoading = false,
   });
 
   @override
   Widget build(BuildContext context) {
     return Material(
       child: InkWell(
-        onTap: enabled ? onTap : null,
+        onTap: enabled && !isLoading ? onTap : null,
         splashColor: Colors.tealAccent,
         hoverColor: hoverColor ?? Colors.tealAccent.withOpacity(.5),
         borderRadius: BorderRadius.circular(10),
@@ -38,7 +41,7 @@ class PrimaryButton extends StatelessWidget {
             constraints: BoxConstraints(
               minWidth: minWidth ?? 0,
             ),
-            child: child,
+            child: isLoading ? const LoadingButtonIndicator() : child,
           ),
         ),
       ),

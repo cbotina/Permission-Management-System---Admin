@@ -1,6 +1,7 @@
 import 'package:pms_admin/common/models/paginated_response.dart';
 import 'package:pms_admin/common/models/response_metadata.dart';
 import 'package:pms_admin/features/periods/data/abstract_repositories/periods_repository.dart';
+import 'package:pms_admin/features/periods/data/dto/create_period_dto.dart';
 import 'package:pms_admin/features/periods/domain/models/period.dart';
 
 class MockPeriodsRepository implements IPeriodsRepository {
@@ -22,6 +23,21 @@ class MockPeriodsRepository implements IPeriodsRepository {
         currentPage: 1,
       ),
     );
+  }
+
+  @override
+  Future<void> create(CreatePeriodDto dto) async {
+    return Future.value();
+  }
+
+  @override
+  Future<void> delete(int id) async {
+    return Future.value();
+  }
+
+  @override
+  Future<void> update(int id, Map<String, dynamic> newValues) async {
+    return Future.value();
   }
 }
 

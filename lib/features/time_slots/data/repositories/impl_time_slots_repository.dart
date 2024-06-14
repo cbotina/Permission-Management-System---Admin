@@ -6,20 +6,18 @@ import 'package:pms_admin/common/models/response_metadata.dart';
 import 'package:pms_admin/features/time_slots/data/abstract_repositories/time_slots_repository.dart';
 import 'package:pms_admin/features/time_slots/domain/models/time_slot.dart';
 import 'package:http/http.dart' as http;
+import 'package:pms_admin/utils/query_params_builder.dart';
 
 class ImplTimeSlotsRepository implements ITimeSlotsRepository {
   @override
   Future<PaginatedResponse<TimeSlot>> getPaginatedTimeSlots(
       int periodId, int page) async {
-    final uri = Uri.http(
-      ENV.backendUrl,
-      'periods/$periodId/time-slots/',
-      {'page': '$page'},
-    );
+    final queryParams = buildQueryParams({'page': '$page'});
 
-    final response = await http.get(
-      uri,
-    );
+    final uri = Uri.parse(
+        '${ENV.backendUrl}/periods/$periodId/time-slots/$queryParams');
+
+    final response = await http.get(uri);
 
     final jsonResponse = jsonDecode(response.body) as Map<String, dynamic>;
     final jsonItems = jsonResponse['items'] as List<dynamic>;
