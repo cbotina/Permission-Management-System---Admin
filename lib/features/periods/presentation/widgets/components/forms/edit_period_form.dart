@@ -1,11 +1,10 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:pms_admin/common/components/buttons/primary_button.dart';
 import 'package:pms_admin/common/components/buttons/secondary_button.dart';
 import 'package:pms_admin/common/components/form_fields/date_form_field.dart';
 import 'package:pms_admin/common/components/form_fields/text_form_field.dart';
+import 'package:pms_admin/common/extensions/string_to_date.dart';
 import 'package:pms_admin/features/periods/domain/models/period.dart';
+import 'package:pms_admin/features/periods/presentation/widgets/components/buttons/form_buttons/edit_period_form_button.dart';
 import 'package:pms_admin/features/periods/presentation/widgets/components/utils/date_picker.dart';
 import 'package:pms_admin/features/periods/presentation/widgets/components/validators/date_validator.dart';
 import 'package:pms_admin/features/periods/presentation/widgets/components/validators/period_name_validator.dart';
@@ -119,27 +118,12 @@ class _EditPeriodFormState extends State<EditPeriodForm> {
                 const SizedBox(
                   width: 15,
                 ),
-                PrimaryButton(
-                  onTap: () {
-                    if (_formKey.currentState!.validate()) {
-                      final period = Period(
-                        id: 1,
-                        name: _periodNameController.text,
-                        startDate: _parseDate(_startDateController.text),
-                        endDate: _parseDate(_endDateController.text),
-                      );
-
-                      log(period.toString());
-                    }
-                  },
-                  minWidth: 80,
-                  child: const Text(
-                    "Aceptar",
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
+                EditPeriodFormButton(
+                  formKey: _formKey,
+                  periodId: widget.period.id,
+                  periodNameController: _periodNameController,
+                  startDateController: _startDateController,
+                  endDateController: _endDateController,
                 ),
               ],
             ),
@@ -149,14 +133,10 @@ class _EditPeriodFormState extends State<EditPeriodForm> {
     );
   }
 
-  DateTime _parseDate(String date) {
-    final parts = date.split('-').map((e) => int.parse(e)).toList();
-    return DateTime(parts[0], parts[1], parts[2]);
-  }
-
   Future<void> _selectDate(
       TextEditingController controller, BuildContext context) async {
-    DateTime? pickedDate = await pickDate(context);
+    final initialDate = controller.text.toDateTime();
+    DateTime? pickedDate = await pickDate(initialDate, context);
 
     if (pickedDate != null) {
       setState(() {

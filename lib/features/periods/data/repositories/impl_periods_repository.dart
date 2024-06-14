@@ -8,7 +8,7 @@ import 'package:pms_admin/features/periods/data/abstract_repositories/periods_re
 import 'package:pms_admin/features/periods/data/dto/create_period_dto.dart';
 import 'package:pms_admin/features/periods/domain/models/period.dart';
 import 'package:http/http.dart' as http;
-import 'package:pms_admin/utils/query_params_builder.dart';
+import 'package:pms_admin/common/utils/query_params_builder.dart';
 
 class ImplPeriodsRepository implements IPeriodsRepository {
   @override
@@ -69,7 +69,7 @@ class ImplPeriodsRepository implements IPeriodsRepository {
   Future<void> update(int periodId, Map<String, dynamic> newValues) async {
     final uri = Uri.parse('${ENV.backendUrl}/periods/$periodId');
 
-    final response = await http.post(
+    final response = await http.patch(
       uri,
       headers: {HttpHeaders.contentTypeHeader: 'application/json'},
       body: json.encode(newValues),

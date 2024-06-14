@@ -6,7 +6,7 @@ import 'package:pms_admin/common/models/response_metadata.dart';
 import 'package:pms_admin/features/time_slots/data/abstract_repositories/time_slots_repository.dart';
 import 'package:pms_admin/features/time_slots/domain/models/time_slot.dart';
 import 'package:http/http.dart' as http;
-import 'package:pms_admin/utils/query_params_builder.dart';
+import 'package:pms_admin/common/utils/query_params_builder.dart';
 
 class ImplTimeSlotsRepository implements ITimeSlotsRepository {
   @override

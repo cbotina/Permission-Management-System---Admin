@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pms_admin/common/components/buttons/primary_button.dart';
-import 'package:pms_admin/common/extensions/show_error_snackbar.dart';
+import 'package:pms_admin/common/extensions/async_value_ui.dart';
 import 'package:pms_admin/common/extensions/string_to_date.dart';
 import 'package:pms_admin/features/periods/data/dto/create_period_dto.dart';
 import 'package:pms_admin/features/periods/data/providers/periods_provider.dart';
@@ -41,8 +41,8 @@ class CreatePeriodFormButton extends ConsumerWidget {
         if (formKey.currentState!.validate()) {
           final dto = CreatePeriodDto(
             name: periodNameController.text,
-            startDate: startDateController.text.toDateTime(),
-            endDate: endDateController.text.toDateTime(),
+            startDate: startDateController.text.toDateTime()!,
+            endDate: endDateController.text.toDateTime()!,
           );
 
           await ref

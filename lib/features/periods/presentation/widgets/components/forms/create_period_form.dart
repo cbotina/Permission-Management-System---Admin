@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:pms_admin/common/components/buttons/secondary_button.dart';
 import 'package:pms_admin/common/components/form_fields/date_form_field.dart';
 import 'package:pms_admin/common/components/form_fields/text_form_field.dart';
-import 'package:pms_admin/features/periods/presentation/widgets/components/buttons/create_period_form_button.dart';
+import 'package:pms_admin/common/extensions/string_to_date.dart';
+import 'package:pms_admin/features/periods/presentation/widgets/components/buttons/form_buttons/create_period_form_button.dart';
 import 'package:pms_admin/features/periods/presentation/widgets/components/utils/date_picker.dart';
 import 'package:pms_admin/features/periods/presentation/widgets/components/validators/date_validator.dart';
 import 'package:pms_admin/features/periods/presentation/widgets/components/validators/period_name_validator.dart';
@@ -120,7 +121,8 @@ class _CreatePeriodFormState extends State<CreatePeriodForm> {
   }
 
   Future<void> _selectDate(TextEditingController controller) async {
-    DateTime? pickedDate = await pickDate(context);
+    final initialDate = controller.text.toDateTime();
+    DateTime? pickedDate = await pickDate(initialDate, context);
 
     if (pickedDate != null) {
       setState(() {

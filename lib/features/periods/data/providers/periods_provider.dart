@@ -1,7 +1,7 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pms_admin/common/models/paginated_response.dart';
 import 'package:pms_admin/features/periods/domain/models/period.dart';
-import 'package:pms_admin/providers/repository_providers.dart';
+import 'package:pms_admin/common/providers/repository_providers.dart';
 
 final allPeriodsProvider =
     FutureProvider<PaginatedResponse<Period>>((ref) async {

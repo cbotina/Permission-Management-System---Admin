@@ -1,4 +1,4 @@
-import 'package:pms_admin/utils/query_params_builder.dart';
+import 'package:pms_admin/common/utils/query_params_builder.dart';
 
 void main() {
   buildQueryParams({
