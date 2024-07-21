@@ -4,13 +4,12 @@ import 'package:pms_admin/features/periods/domain/models/period.dart';
 import 'package:pms_admin/common/providers/repository_providers.dart';
 import 'package:pms_admin/common/providers/search_query_provider.dart';
 
-final allPeriodsProvider =
-    FutureProvider<PaginatedResponse<Period>>((ref) async {
+final allPeriodsProvider = FutureProvider<Pagination<Period>>((ref) async {
   return await ref.watch(periodsRepositoryProvider).getPaginatedPeriods(4, '');
 });
 
 final paginatedPeriodsProvider =
-    FutureProvider.family<PaginatedResponse<Period>, int>((ref, page) async {
+    FutureProvider.family<Pagination<Period>, int>((ref, page) async {
   final searchQuery = ref.watch(searchQueryController);
 
   return await ref

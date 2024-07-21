@@ -5,8 +5,8 @@ class ActivePeriodNotifier extends StateNotifier<Period> {
   ActivePeriodNotifier()
       : super(
           Period(
-            id: 45,
-            name: '2024-A',
+            id: 1,
+            name: '2023-B',
             startDate: DateTime(2024, 2, 1),
             endDate: DateTime(2024, 5, 30),
           ),

@@ -147,7 +147,7 @@ class _$PeriodImpl implements _Period {
 
   @override
   String toString() {
-    return name;
+    return 'Period(id: $id, name: $name, startDate: $startDate, endDate: $endDate)';
   }
 
   @override

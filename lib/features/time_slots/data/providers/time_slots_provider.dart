@@ -6,7 +6,7 @@ import 'package:pms_admin/features/time_slots/domain/models/time_slot.dart';
 import 'package:pms_admin/common/providers/repository_providers.dart';
 
 final paginatedTimeSlotsProvider =
-    FutureProvider.family<PaginatedResponse<TimeSlot>, int>((ref, page) async {
+    FutureProvider.family<Pagination<TimeSlot>, int>((ref, page) async {
   final activePeriodId = ref.watch(activePeriodProvider).id;
 
   final searchQuery = ref.watch(searchQueryController);

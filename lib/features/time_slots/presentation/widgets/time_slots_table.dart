@@ -4,6 +4,7 @@ import 'package:pms_admin/common/components/pagination_widget.dart';
 import 'package:pms_admin/common/components/table/table.dart';
 import 'package:pms_admin/common/components/table/table_cell.dart';
 import 'package:pms_admin/common/components/table/table_label.dart';
+import 'package:pms_admin/common/errors/error_widget.dart';
 import 'package:pms_admin/features/time_slots/data/providers/time_slots_provider.dart';
 import 'package:pms_admin/features/time_slots/domain/models/time_slot.dart';
 import 'package:pms_admin/features/time_slots/presentation/widgets/components/time_slot_type.dart';
@@ -53,8 +54,11 @@ class _PeriodsPageState extends ConsumerState<TimeSlotsTable> {
           ],
         );
       },
-      error: (error, stackTrace) => Text(error.toString()),
-      loading: () => const CircularProgressIndicator(),
+      error: (error, stackTrace) => ErrorWidgetUI(onRefresh: () {
+        ref.invalidate(paginatedTimeSlotsProvider);
+      }),
+      loading: () => const Center(child: CircularProgressIndicator()),
+      skipLoadingOnRefresh: false,
     );
   }
 }

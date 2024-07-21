@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pms_admin/common/components/buttons/primary_button.dart';
 import 'package:pms_admin/common/components/form_fields/dropdown_button_form_field.dart';
+import 'package:pms_admin/common/errors/error_widget.dart';
 import 'package:pms_admin/common/providers/active_period_provider.dart';
 import 'package:pms_admin/features/periods/data/providers/periods_provider.dart';
 import 'package:pms_admin/features/periods/domain/models/period.dart';
@@ -77,8 +78,10 @@ class _ChangeActivePeriodForState
           ),
         );
       },
-      error: (error, stackTrace) => Text(error.toString()),
-      loading: () => const CircularProgressIndicator(),
+      error: (error, stackTrace) => ErrorWidgetUI(onRefresh: () {
+        ref.invalidate(paginatedPeriodsProvider);
+      }),
+      loading: () => const Center(child: CircularProgressIndicator()),
     );
   }
 }

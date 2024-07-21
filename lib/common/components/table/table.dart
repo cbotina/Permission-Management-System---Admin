@@ -6,16 +6,18 @@ class TableWidget extends StatelessWidget {
     required this.columns,
     required this.rows,
     this.headerColor,
+    this.colapsed = false,
   });
   final List<DataColumn> columns;
   final List<DataRow> rows;
   final Color? headerColor;
+  final bool colapsed;
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: DataTable(
-        dataRowMaxHeight: 45,
+        dataRowMaxHeight: colapsed ? 30 : 45,
         dataRowMinHeight: 15,
         headingRowHeight: 45,
         decoration: BoxDecoration(

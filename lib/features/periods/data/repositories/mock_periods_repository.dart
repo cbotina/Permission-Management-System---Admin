@@ -12,9 +12,9 @@ class MockPeriodsRepository implements IPeriodsRepository {
   }
 
   @override
-  Future<PaginatedResponse<Period>> getPaginatedPeriods(
+  Future<Pagination<Period>> getPaginatedPeriods(
       int page, String searchQuery) async {
-    return PaginatedResponse(
+    return Pagination(
       items: mockPeriods.sublist(0, 9),
       meta: const ResponseMetadata(
         totalItems: 10,
@@ -39,6 +39,12 @@ class MockPeriodsRepository implements IPeriodsRepository {
   @override
   Future<void> update(int id, Map<String, dynamic> newValues) async {
     return Future.value();
+  }
+
+  @override
+  Future<Period?> getActivePeriod() {
+    // TODO: implement getActivePeriod
+    throw UnimplementedError();
   }
 }
 

@@ -1,12 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:pms_admin/features/absences/data/providers/period_absences_provider.dart';
 
-class Stats extends StatelessWidget {
+class Stats extends ConsumerWidget {
   const Stats({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: Text("Estadisticas"),
-    );
+  Widget build(BuildContext context, ref) {
+    final list = ref.watch(absencesProvider(1));
+    return Center(
+        child: list.when(
+      data: (data) {
+        return Column(
+          children: data.items.map((e) => Text(e.toString())).toList(),
+        );
+      },
+      error: (error, stackTrace) => Text(error.toString()),
+      loading: () => const CircularProgressIndicator(),
+    ));
   }
 }

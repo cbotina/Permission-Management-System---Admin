@@ -5,6 +5,7 @@ import 'package:pms_admin/common/components/pagination_widget.dart';
 import 'package:pms_admin/common/components/table/table.dart';
 import 'package:pms_admin/common/components/table/table_cell.dart';
 import 'package:pms_admin/common/components/table/table_label.dart';
+import 'package:pms_admin/common/errors/error_widget.dart';
 import 'package:pms_admin/features/periods/data/providers/periods_provider.dart';
 import 'package:pms_admin/features/periods/domain/models/period.dart';
 import 'package:pms_admin/features/periods/presentation/widgets/period_action_buttons.dart';
@@ -54,8 +55,11 @@ class _PeriodsPageState extends ConsumerState<PeriodsTable> {
           ],
         );
       },
-      error: (error, stackTrace) => Text(error.toString()),
-      loading: () => const CircularProgressIndicator(),
+      error: (error, stackTrace) => ErrorWidgetUI(onRefresh: () {
+        ref.invalidate(paginatedPeriodsProvider);
+      }),
+      loading: () => const Center(child: CircularProgressIndicator()),
+      skipLoadingOnRefresh: false,
     );
   }
 }

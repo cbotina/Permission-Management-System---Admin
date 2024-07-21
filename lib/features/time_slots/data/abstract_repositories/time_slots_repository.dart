@@ -4,7 +4,7 @@ import 'package:pms_admin/features/time_slots/data/dto/update_time_slot_dto.dart
 import 'package:pms_admin/features/time_slots/domain/models/time_slot.dart';
 
 abstract class ITimeSlotsRepository {
-  Future<PaginatedResponse<TimeSlot>> getPaginatedTimeSlots(
+  Future<Pagination<TimeSlot>> getPaginatedTimeSlots(
     int periodId,
     int page,
     String searchQuery,

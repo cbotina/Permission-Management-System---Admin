@@ -4,6 +4,7 @@ import 'package:pms_admin/common/components/page_title.dart';
 import 'package:pms_admin/common/components/scrollable_page.dart';
 import 'package:pms_admin/common/components/search_bar.dart';
 import 'package:pms_admin/common/providers/active_period_provider.dart';
+import 'package:pms_admin/features/time_slots/data/providers/time_slots_provider.dart';
 import 'package:pms_admin/features/time_slots/presentation/widgets/components/buttons/create_time_slot_button.dart';
 import 'package:pms_admin/features/time_slots/presentation/widgets/time_slots_table.dart';
 
@@ -19,10 +20,21 @@ class TimeSlots extends StatelessWidget {
             Consumer(builder: (context, ref, child) {
               final activePeriod = ref.watch(activePeriodProvider);
               return PageTitle(
-                title: 'Franjas Horarias $activePeriod',
+                title: 'Franjas Horarias ${activePeriod.name}',
                 iconData: Icons.timer_rounded,
               );
             }),
+            const SizedBox(width: 30),
+            Consumer(
+              builder: (context, ref, child) {
+                return IconButton(
+                  onPressed: () {
+                    ref.invalidate(paginatedTimeSlotsProvider);
+                  },
+                  icon: const Icon(Icons.refresh),
+                );
+              },
+            ),
             const SizedBox(width: 30),
             const Expanded(child: CustomSearchBar()),
             const SizedBox(width: 30),

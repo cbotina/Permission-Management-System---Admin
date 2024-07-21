@@ -6,9 +6,15 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import 'package:pms_admin/common/themes/light_theme.dart';
 import 'package:pms_admin/pages/main_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   await dotenv.load();
+
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
+  final testToken = dotenv.get('token');
+
+  await prefs.setString('token', testToken);
 
   Intl.defaultLocale = 'es_ES';
   initializeDateFormatting('es_ES', null).then((_) {

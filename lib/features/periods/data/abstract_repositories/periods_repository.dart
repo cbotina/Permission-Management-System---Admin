@@ -5,7 +5,7 @@ import 'package:pms_admin/features/periods/domain/models/period.dart';
 abstract class IPeriodsRepository {
   Future<List<Period>> getAllPeriods();
 
-  Future<PaginatedResponse<Period>> getPaginatedPeriods(
+  Future<Pagination<Period>> getPaginatedPeriods(
     int page,
     String searchQuery,
   );
@@ -15,4 +15,6 @@ abstract class IPeriodsRepository {
   Future<void> delete(int id);
 
   Future<void> update(int id, Map<String, dynamic> newValues);
+
+  Future<Period?> getActivePeriod();
 }
