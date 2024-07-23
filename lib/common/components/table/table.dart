@@ -22,7 +22,7 @@ class TableWidget extends StatelessWidget {
         headingRowHeight: 45,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
-          color: headerColor ?? Colors.grey.shade200,
+          color: headerColor ?? const Color.fromARGB(255, 198, 255, 241),
         ),
         border: TableBorder(
           horizontalInside: BorderSide(color: Colors.grey.shade300, width: .3),

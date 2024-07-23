@@ -13,21 +13,43 @@ import 'package:pms_admin/common/errors/error_widget.dart';
 import 'package:pms_admin/features/permissions/data/providers/permission_absences_provider.dart';
 import 'package:pms_admin/features/permissions/data/providers/permissions_provider.dart';
 import 'package:pms_admin/features/permissions/domain/models/permission_absence_view.dart';
+import 'package:pms_admin/features/permissions/presentation/widgets/components/form_buttons/approve_permission_form_button.dart';
+import 'package:pms_admin/features/permissions/presentation/widgets/components/form_buttons/reject_permission_form_button.dart';
 import 'package:pms_admin/features/permissions/presentation/widgets/components/permission_absences_table.dart';
 import 'package:pms_admin/features/permissions/presentation/widgets/components/permission_status_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class PermissionDetailsPage extends ConsumerWidget {
+class EditPermissionPage extends ConsumerStatefulWidget {
   final int permissionId;
-
-  const PermissionDetailsPage({
+  const EditPermissionPage({
     super.key,
     required this.permissionId,
   });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final permission = ref.watch(permissionDetailsProvider(permissionId));
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _EditPermissionPagState();
+}
+
+class _EditPermissionPagState extends ConsumerState<EditPermissionPage> {
+  late TextEditingController _principalCommentController;
+
+  @override
+  void initState() {
+    _principalCommentController = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _principalCommentController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final permission =
+        ref.watch(permissionDetailsProvider(widget.permissionId));
 
     return permission.when(
       data: (data) {
@@ -157,8 +179,7 @@ class PermissionDetailsPage extends ConsumerWidget {
                   Expanded(
                     child: OutlinedTextFormField(
                       label: 'Comentario Coordinadora',
-                      initialValue: data.principalNote,
-                      readOnly: true,
+                      controller: _principalCommentController,
                     ),
                   ),
                 ],
@@ -178,20 +199,28 @@ class PermissionDetailsPage extends ConsumerWidget {
               const SizedBox(height: 15),
               PermissionAbsencesTable(permissionId: data.id),
               const SizedBox(height: 15),
-              Align(
-                alignment: Alignment.centerRight,
-                child: PrimaryButton(
-                  minWidth: 100,
-                  child: const Text(
-                    "Salir",
-                    style: TextStyle(color: Colors.white),
-                    textAlign: TextAlign.center,
+              const Row(
+                children: [
+                  Text(
+                    "Acciones Rápidas",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
-                  onTap: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-              )
+                ],
+              ),
+              const SizedBox(height: 15),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  RejectPermissionFormButton(
+                      controller: _principalCommentController),
+                  ApprovePermissionFormButton(
+                    controller: _principalCommentController,
+                  ),
+                ],
+              ),
             ],
           ),
         );

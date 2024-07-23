@@ -7,6 +7,7 @@ class LoadingButtonIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Row(
       mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min, // todo: revisar si no rompe nada
       children: [
         SizedBox(
           width: 22,

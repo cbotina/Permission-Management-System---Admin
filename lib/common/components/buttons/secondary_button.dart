@@ -4,18 +4,20 @@ class SecondaryButton extends StatelessWidget {
   final Widget child;
   final VoidCallback? onTap;
   final double? minWidth;
+  final bool enabled;
   const SecondaryButton({
     super.key,
     required this.child,
     required this.onTap,
     this.minWidth,
+    this.enabled = true,
   });
 
   @override
   Widget build(BuildContext context) {
     return Material(
       child: InkWell(
-        onTap: onTap,
+        onTap: enabled ? onTap : null,
         splashColor: Colors.tealAccent,
         hoverColor: Colors.tealAccent.withOpacity(.5),
         borderRadius: BorderRadius.circular(10),

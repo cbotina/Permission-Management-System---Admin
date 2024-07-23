@@ -7,7 +7,7 @@ class ViewPermissionIconButton extends StatelessWidget {
   final int permissionId;
   const ViewPermissionIconButton({
     super.key,
-    required this.enabled,
+    this.enabled = true,
     required this.permissionId,
   });
 

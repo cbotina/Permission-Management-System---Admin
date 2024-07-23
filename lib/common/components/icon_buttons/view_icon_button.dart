@@ -11,7 +11,7 @@ class ViewIconButton extends StatelessWidget {
       onPressed: enabled ? onTap : null,
       hoverColor: Colors.teal,
       icon: Icon(
-        Icons.edit,
+        Icons.info_outline,
         color: enabled ? Colors.blue : Colors.grey.shade200,
       ),
       splashRadius: 15,

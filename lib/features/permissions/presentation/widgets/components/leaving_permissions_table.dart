@@ -10,24 +10,26 @@ import 'package:pms_admin/common/components/table/table_label.dart';
 import 'package:pms_admin/common/errors/error_widget.dart';
 import 'package:pms_admin/features/permissions/data/providers/period_permissions_repository.dart';
 import 'package:pms_admin/features/permissions/domain/models/permission_with_student_view.dart';
+import 'package:pms_admin/features/permissions/presentation/widgets/components/buttons/edit_permission_icon_button.dart';
 import 'package:pms_admin/features/permissions/presentation/widgets/components/buttons/view_permission_icon_button.dart';
 import 'package:pms_admin/features/permissions/presentation/widgets/components/permission_action_buttons.dart';
 import 'package:pms_admin/features/permissions/presentation/widgets/components/permission_status_widget.dart';
 
-class PermissionsTable extends ConsumerStatefulWidget {
-  const PermissionsTable({super.key});
+class LeavingPermissionsTable extends ConsumerStatefulWidget {
+  const LeavingPermissionsTable({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
-      _PermissionsTableState();
+      _LeavingPermissionsTableState();
 }
 
-class _PermissionsTableState extends ConsumerState<PermissionsTable> {
+class _LeavingPermissionsTableState
+    extends ConsumerState<LeavingPermissionsTable> {
   int page = 1;
 
   @override
   Widget build(BuildContext context) {
-    final permissions = ref.watch(periodPermissionsProvider(page));
+    final permissions = ref.watch(periodLeavingPermissionsProvider(page));
 
     return permissions.when(
       data: (data) {
@@ -62,7 +64,7 @@ class _PermissionsTableState extends ConsumerState<PermissionsTable> {
       },
       error: (error, stackTrace) => ErrorWidgetUI(onRefresh: () {
         log(error.toString());
-        ref.invalidate(periodPermissionsProvider);
+        ref.invalidate(periodLeavingPermissionsProvider);
       }),
       loading: () => const Center(child: CircularProgressIndicator()),
       skipLoadingOnRefresh: false,
@@ -75,7 +77,7 @@ List<DataColumn> periodsColumns = [
   const DataColumn(label: TableLabel('Estudiante')),
   const DataColumn(label: TableLabel('Motivo')),
   const DataColumn(label: TableLabel('Estado')),
-  const DataColumn(label: TableLabel('Ver detalles')),
+  const DataColumn(label: TableLabel('Acciones')), // ver y borrar
 ];
 
 List<DataRow> getPeriodsRows(List<PermissionWithStudentView> permissions) {
@@ -98,9 +100,7 @@ List<DataRow> getPeriodsRows(List<PermissionWithStudentView> permissions) {
                 MainAxisAlignment.center,
               ),
               tableCell(
-                ViewPermissionIconButton(
-                  permissionId: permission.permissionId,
-                ),
+                ViewPermissionIconButton(permissionId: permission.permissionId),
                 MainAxisAlignment.center,
               ),
             ],

@@ -32,13 +32,12 @@ class _PermissionAbsencesTableState
 
     return timeSlots.when(
       data: (data) {
-        return SizedBox(
-          height: 150,
+        return Expanded(
           child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: TableWidget(
               colapsed: true,
-              headerColor: Theme.of(context).colorScheme.primary,
+              headerColor: const Color.fromARGB(255, 240, 255, 243),
               columns: timeSlotsColumns,
               rows: timeSlotsRows(data, context),
             ),
@@ -54,10 +53,11 @@ class _PermissionAbsencesTableState
 }
 
 List<DataColumn> timeSlotsColumns = [
-  const DataColumn(label: TableLabel('Fecha')),
-  const DataColumn(label: TableLabel('Horas')),
-  const DataColumn(label: TableLabel('Materia')),
-  const DataColumn(label: TableLabel('Comentario Docente')),
+  const DataColumn(label: TableLabel('Fecha', foregroundColor: Colors.black)),
+  const DataColumn(label: TableLabel('Horas', foregroundColor: Colors.black)),
+  const DataColumn(label: TableLabel('Materia', foregroundColor: Colors.black)),
+  const DataColumn(
+      label: TableLabel('Comentario Docente', foregroundColor: Colors.black)),
 ];
 
 List<DataRow> timeSlotsRows(
@@ -69,7 +69,7 @@ List<DataRow> timeSlotsRows(
                   MainAxisAlignment.center),
               tableCell(
                 Text(
-                    '${absence.startTime.format(context)} ${absence.endtime.format(context)}'),
+                    '${absence.startTime.format(context)} - ${absence.endtime.format(context)}'),
                 MainAxisAlignment.center,
               ),
               tableCell(

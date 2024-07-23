@@ -11,6 +11,7 @@ class Strings {
   static const permissionRequests = 'Solicitudes de permiso';
   static const permissionRegistry = 'Registro de permisos';
   static const stats = 'Estadísiticas';
+  static const leavingPermissions = 'Permisos de salida';
   static const requiredField = 'Este campo es requerido';
   static const maxCharsAllowed =
       'El valor ingresado excede el límite de caracteres';

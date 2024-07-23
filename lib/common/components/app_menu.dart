@@ -100,7 +100,11 @@ class AppMenu extends StatelessWidget {
                       title: Strings.permissionRequests,
                     ),
                     const DrawerItem(
-                      iconData: Icons.list,
+                      iconData: Icons.door_sliding,
+                      title: Strings.leavingPermissions,
+                    ),
+                    const DrawerItem(
+                      iconData: Icons.history,
                       title: Strings.permissionRegistry,
                     ),
                     const DrawerItem(

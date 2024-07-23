@@ -15,9 +15,9 @@ class TableLabel extends StatelessWidget {
       child: Text(
         text,
         style: TextStyle(
-          fontWeight: FontWeight.bold,
+          fontWeight: FontWeight.w600,
           fontSize: 15,
-          color: Theme.of(context).colorScheme.onPrimaryContainer,
+          color: foregroundColor,
         ),
         textAlign: TextAlign.center,
       ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pms_admin/common/constants/strings.dart';
 import 'package:pms_admin/pages/drawer_pages/groups.dart';
+import 'package:pms_admin/pages/drawer_pages/leaving_permissions.dart';
 import 'package:pms_admin/pages/drawer_pages/periods_page.dart';
 import 'package:pms_admin/pages/drawer_pages/permission_registry.dart';
 import 'package:pms_admin/pages/drawer_pages/permission_requests.dart';
@@ -12,7 +13,7 @@ import 'package:pms_admin/pages/drawer_pages/teachers.dart';
 import 'package:pms_admin/pages/drawer_pages/time_slots_page.dart';
 
 class SelectedPageNameNotifier extends StateNotifier<String> {
-  SelectedPageNameNotifier() : super(Strings.stats);
+  SelectedPageNameNotifier() : super(Strings.leavingPermissions);
   void setPage(String pageName) {
     state = pageName;
   }
@@ -38,4 +39,5 @@ final _builders = <String, WidgetBuilder>{
   Strings.permissionRequests: (_) => const PermissionRequests(),
   Strings.permissionRegistry: (_) => const PermissionRegistry(),
   Strings.stats: (_) => const Stats(),
+  Strings.leavingPermissions: (_) => const LeavingPermissionsPage(),
 };

@@ -16,6 +16,7 @@ class OutlinedTextFormField extends StatelessWidget {
   final Widget? suffixIcon;
   final bool? autocorrect;
   final bool? readOnly;
+  final bool thick;
 
   const OutlinedTextFormField({
     super.key,
@@ -26,13 +27,14 @@ class OutlinedTextFormField extends StatelessWidget {
     this.validator,
     this.maxLines,
     this.obscureText = false,
-    this.borderRadius = 7,
+    this.borderRadius = 8,
     this.hint = '',
     this.borderColor,
     this.prefixIcon,
     this.suffixIcon,
     this.autocorrect,
     this.readOnly,
+    this.thick = false,
   });
 
   @override
@@ -58,7 +60,7 @@ class OutlinedTextFormField extends StatelessWidget {
         isDense: true,
         label: label.isEmpty ? null : Text(label),
         contentPadding:
-            const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+            EdgeInsets.symmetric(vertical: thick ? 20 : 15, horizontal: 15),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(borderRadius),
           borderSide: BorderSide(

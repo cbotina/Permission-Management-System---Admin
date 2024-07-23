@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:pms_admin/common/components/buttons/search_button.dart';
 
-class OutlinedSearchBar extends StatelessWidget {
+class StudentFormField extends StatelessWidget {
   final String? initialValue;
   final String label;
   final bool isNumberField;
@@ -11,9 +10,9 @@ class OutlinedSearchBar extends StatelessWidget {
   final int? maxLines;
   final bool isPassword;
   final double borderRadius;
-  final VoidCallback? onSearch;
+  final VoidCallback onTap;
 
-  const OutlinedSearchBar({
+  const StudentFormField({
     super.key,
     this.initialValue,
     required this.label,
@@ -23,24 +22,28 @@ class OutlinedSearchBar extends StatelessWidget {
     this.maxLines,
     this.isPassword = false,
     this.borderRadius = 8,
-    this.onSearch,
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      maxLines: maxLines,
+      onTap: onTap,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      maxLines: 1,
       controller: controller,
       initialValue: initialValue,
       style: Theme.of(context).textTheme.bodyMedium,
       obscureText: isPassword,
       enableSuggestions: false,
       autocorrect: false,
+      readOnly: true,
       decoration: InputDecoration(
         isDense: true,
         label: Text(label),
-        suffixIcon: SearchButton(
-          onTap: onSearch,
+        prefixIcon: Icon(
+          Icons.person,
+          color: Theme.of(context).colorScheme.primary,
         ),
         contentPadding:
             const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
@@ -77,6 +80,9 @@ class OutlinedSearchBar extends StatelessWidget {
           ? [FilteringTextInputFormatter.allow(RegExp(r'[0-9]'))]
           : null,
       keyboardType: isNumberField ? TextInputType.number : TextInputType.text,
+      onTapOutside: (e) {
+        FocusScope.of(context).unfocus();
+      },
       validator: validator,
     );
   }

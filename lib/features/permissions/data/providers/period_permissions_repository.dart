@@ -28,3 +28,15 @@ final periodLeavingPermissionsProvider =
       .watch(permissionWithStudentRepositoryProvider)
       .getPeriodPermissions(periodId, page, searchQuery, 'L');
 });
+
+final periodPermissionRequestsProvider =
+    FutureProvider.family<Pagination<PermissionWithStudentView>, int>(
+        (ref, page) async {
+  final periodId = ref.watch(activePeriodProvider).id;
+
+  final searchQuery = ref.watch(searchQueryController);
+
+  return await ref
+      .watch(permissionWithStudentRepositoryProvider)
+      .getPeriodPermissions(periodId, page, searchQuery, 'P');
+});

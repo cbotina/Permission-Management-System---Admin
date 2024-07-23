@@ -121,7 +121,7 @@ class _CreatePeriodFormState extends State<CreatePeriodForm> {
   }
 
   Future<void> _selectDate(TextEditingController controller) async {
-    final initialDate = controller.text.toDateTime();
+    final initialDate = DateTime.now();
     DateTime? pickedDate = await pickDate(initialDate, context);
 
     if (pickedDate != null) {
