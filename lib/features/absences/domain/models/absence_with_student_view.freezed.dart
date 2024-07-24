@@ -18,11 +18,13 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AbsenceWithStudentView {
   int get absenceId => throw _privateConstructorUsedError;
   String get student => throw _privateConstructorUsedError;
+  String get subjectName => throw _privateConstructorUsedError;
+  String? get teacherNote => throw _privateConstructorUsedError;
   String get studentCC => throw _privateConstructorUsedError;
   DateTime get absenceDate => throw _privateConstructorUsedError;
   TimeOfDay get startTime => throw _privateConstructorUsedError;
   TimeOfDay get endTime => throw _privateConstructorUsedError;
-  PermissionStatus get permissionStatus => throw _privateConstructorUsedError;
+  PermissionStatus? get permissionStatus => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AbsenceWithStudentViewCopyWith<AbsenceWithStudentView> get copyWith =>
@@ -38,11 +40,13 @@ abstract class $AbsenceWithStudentViewCopyWith<$Res> {
   $Res call(
       {int absenceId,
       String student,
+      String subjectName,
+      String? teacherNote,
       String studentCC,
       DateTime absenceDate,
       TimeOfDay startTime,
       TimeOfDay endTime,
-      PermissionStatus permissionStatus});
+      PermissionStatus? permissionStatus});
 }
 
 /// @nodoc
@@ -61,11 +65,13 @@ class _$AbsenceWithStudentViewCopyWithImpl<$Res,
   $Res call({
     Object? absenceId = null,
     Object? student = null,
+    Object? subjectName = null,
+    Object? teacherNote = freezed,
     Object? studentCC = null,
     Object? absenceDate = null,
     Object? startTime = null,
     Object? endTime = null,
-    Object? permissionStatus = null,
+    Object? permissionStatus = freezed,
   }) {
     return _then(_value.copyWith(
       absenceId: null == absenceId
@@ -76,6 +82,14 @@ class _$AbsenceWithStudentViewCopyWithImpl<$Res,
           ? _value.student
           : student // ignore: cast_nullable_to_non_nullable
               as String,
+      subjectName: null == subjectName
+          ? _value.subjectName
+          : subjectName // ignore: cast_nullable_to_non_nullable
+              as String,
+      teacherNote: freezed == teacherNote
+          ? _value.teacherNote
+          : teacherNote // ignore: cast_nullable_to_non_nullable
+              as String?,
       studentCC: null == studentCC
           ? _value.studentCC
           : studentCC // ignore: cast_nullable_to_non_nullable
@@ -92,10 +106,10 @@ class _$AbsenceWithStudentViewCopyWithImpl<$Res,
           ? _value.endTime
           : endTime // ignore: cast_nullable_to_non_nullable
               as TimeOfDay,
-      permissionStatus: null == permissionStatus
+      permissionStatus: freezed == permissionStatus
           ? _value.permissionStatus
           : permissionStatus // ignore: cast_nullable_to_non_nullable
-              as PermissionStatus,
+              as PermissionStatus?,
     ) as $Val);
   }
 }
@@ -112,11 +126,13 @@ abstract class _$$AbsenceWithStudentViewImplCopyWith<$Res>
   $Res call(
       {int absenceId,
       String student,
+      String subjectName,
+      String? teacherNote,
       String studentCC,
       DateTime absenceDate,
       TimeOfDay startTime,
       TimeOfDay endTime,
-      PermissionStatus permissionStatus});
+      PermissionStatus? permissionStatus});
 }
 
 /// @nodoc
@@ -134,11 +150,13 @@ class __$$AbsenceWithStudentViewImplCopyWithImpl<$Res>
   $Res call({
     Object? absenceId = null,
     Object? student = null,
+    Object? subjectName = null,
+    Object? teacherNote = freezed,
     Object? studentCC = null,
     Object? absenceDate = null,
     Object? startTime = null,
     Object? endTime = null,
-    Object? permissionStatus = null,
+    Object? permissionStatus = freezed,
   }) {
     return _then(_$AbsenceWithStudentViewImpl(
       absenceId: null == absenceId
@@ -149,6 +167,14 @@ class __$$AbsenceWithStudentViewImplCopyWithImpl<$Res>
           ? _value.student
           : student // ignore: cast_nullable_to_non_nullable
               as String,
+      subjectName: null == subjectName
+          ? _value.subjectName
+          : subjectName // ignore: cast_nullable_to_non_nullable
+              as String,
+      teacherNote: freezed == teacherNote
+          ? _value.teacherNote
+          : teacherNote // ignore: cast_nullable_to_non_nullable
+              as String?,
       studentCC: null == studentCC
           ? _value.studentCC
           : studentCC // ignore: cast_nullable_to_non_nullable
@@ -165,10 +191,10 @@ class __$$AbsenceWithStudentViewImplCopyWithImpl<$Res>
           ? _value.endTime
           : endTime // ignore: cast_nullable_to_non_nullable
               as TimeOfDay,
-      permissionStatus: null == permissionStatus
+      permissionStatus: freezed == permissionStatus
           ? _value.permissionStatus
           : permissionStatus // ignore: cast_nullable_to_non_nullable
-              as PermissionStatus,
+              as PermissionStatus?,
     ));
   }
 }
@@ -179,6 +205,8 @@ class _$AbsenceWithStudentViewImpl implements _AbsenceWithStudentView {
   const _$AbsenceWithStudentViewImpl(
       {required this.absenceId,
       required this.student,
+      required this.subjectName,
+      required this.teacherNote,
       required this.studentCC,
       required this.absenceDate,
       required this.startTime,
@@ -190,6 +218,10 @@ class _$AbsenceWithStudentViewImpl implements _AbsenceWithStudentView {
   @override
   final String student;
   @override
+  final String subjectName;
+  @override
+  final String? teacherNote;
+  @override
   final String studentCC;
   @override
   final DateTime absenceDate;
@@ -198,11 +230,11 @@ class _$AbsenceWithStudentViewImpl implements _AbsenceWithStudentView {
   @override
   final TimeOfDay endTime;
   @override
-  final PermissionStatus permissionStatus;
+  final PermissionStatus? permissionStatus;
 
   @override
   String toString() {
-    return 'AbsenceWithStudentView(absenceId: $absenceId, student: $student, studentCC: $studentCC, absenceDate: $absenceDate, startTime: $startTime, endTime: $endTime, permissionStatus: $permissionStatus)';
+    return 'AbsenceWithStudentView(absenceId: $absenceId, student: $student, subjectName: $subjectName, teacherNote: $teacherNote, studentCC: $studentCC, absenceDate: $absenceDate, startTime: $startTime, endTime: $endTime, permissionStatus: $permissionStatus)';
   }
 
   @override
@@ -213,6 +245,10 @@ class _$AbsenceWithStudentViewImpl implements _AbsenceWithStudentView {
             (identical(other.absenceId, absenceId) ||
                 other.absenceId == absenceId) &&
             (identical(other.student, student) || other.student == student) &&
+            (identical(other.subjectName, subjectName) ||
+                other.subjectName == subjectName) &&
+            (identical(other.teacherNote, teacherNote) ||
+                other.teacherNote == teacherNote) &&
             (identical(other.studentCC, studentCC) ||
                 other.studentCC == studentCC) &&
             (identical(other.absenceDate, absenceDate) ||
@@ -225,8 +261,17 @@ class _$AbsenceWithStudentViewImpl implements _AbsenceWithStudentView {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, absenceId, student, studentCC,
-      absenceDate, startTime, endTime, permissionStatus);
+  int get hashCode => Object.hash(
+      runtimeType,
+      absenceId,
+      student,
+      subjectName,
+      teacherNote,
+      studentCC,
+      absenceDate,
+      startTime,
+      endTime,
+      permissionStatus);
 
   @JsonKey(ignore: true)
   @override
@@ -240,17 +285,23 @@ abstract class _AbsenceWithStudentView implements AbsenceWithStudentView {
   const factory _AbsenceWithStudentView(
           {required final int absenceId,
           required final String student,
+          required final String subjectName,
+          required final String? teacherNote,
           required final String studentCC,
           required final DateTime absenceDate,
           required final TimeOfDay startTime,
           required final TimeOfDay endTime,
-          required final PermissionStatus permissionStatus}) =
+          required final PermissionStatus? permissionStatus}) =
       _$AbsenceWithStudentViewImpl;
 
   @override
   int get absenceId;
   @override
   String get student;
+  @override
+  String get subjectName;
+  @override
+  String? get teacherNote;
   @override
   String get studentCC;
   @override
@@ -260,7 +311,7 @@ abstract class _AbsenceWithStudentView implements AbsenceWithStudentView {
   @override
   TimeOfDay get endTime;
   @override
-  PermissionStatus get permissionStatus;
+  PermissionStatus? get permissionStatus;
   @override
   @JsonKey(ignore: true)
   _$$AbsenceWithStudentViewImplCopyWith<_$AbsenceWithStudentViewImpl>

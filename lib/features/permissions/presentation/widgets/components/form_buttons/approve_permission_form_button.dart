@@ -1,21 +1,41 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pms_admin/common/components/buttons/primary_button.dart';
+import 'package:pms_admin/common/extensions/async_value_ui.dart';
 import 'package:pms_admin/features/permissions/data/dto/update_permission_dto.dart';
 import 'package:pms_admin/features/permissions/domain/models/permission.dart';
+import 'package:pms_admin/features/permissions/presentation/controllers/update_permission_controller.dart';
 
-class ApprovePermissionFormButton extends StatelessWidget {
+class ApprovePermissionFormButton extends ConsumerWidget {
   const ApprovePermissionFormButton({
     super.key,
     required TextEditingController controller,
+    required this.permissionId,
   }) : _principalCommentController = controller;
 
   final TextEditingController _principalCommentController;
+  final int permissionId;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
+    final AsyncValue<void> state =
+        ref.watch(updatePermissionControllerProvider);
+
+    ref.listen<AsyncValue<void>>(updatePermissionControllerProvider,
+        (prev, state) {
+      state.showSnackbarOnError(context);
+      // state.popOnSuccess(
+      //   prev,
+      //   "Permiso aprobado exitosamente",
+      //   context,
+      // );
+    });
+
     return PrimaryButton(
+      isLoading: state.isLoading,
+      enabled: !state.isLoading,
       minWidth: 250,
       backgroundColor: Colors.teal,
       child: const Text(
@@ -31,11 +51,9 @@ class ApprovePermissionFormButton extends StatelessWidget {
           approvalDate: DateTime.now(),
         );
 
-        log(dto.status.toString());
-        log(dto.principalNote.toString());
-        log(dto.approvalDate.toString());
-
-        Navigator.of(context).pop();
+        ref
+            .read(updatePermissionControllerProvider.notifier)
+            .updatePermission(permissionId, dto);
       },
     );
   }

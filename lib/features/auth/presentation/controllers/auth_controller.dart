@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:pms_admin/common/providers/active_period_provider.dart';
 import 'package:pms_admin/features/auth/application/auth_service.dart';
 import 'package:pms_admin/features/auth/data/dto/login_dto.dart';
 import 'package:pms_admin/features/auth/data/providers/valid_token_provider.dart';
@@ -11,7 +12,7 @@ class AuthController extends AsyncNotifier<AuthState> {
 
   @override
   FutureOr<AuthState> build() {
-    return AuthState(AuthResult.logout, null, null, null, null);
+    return AuthState(AuthResult.logout, null, null, null);
   }
 
   Future<void> login(LoginDto dto) async {

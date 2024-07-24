@@ -11,11 +11,13 @@ class AbsenceWithStudentView with _$AbsenceWithStudentView {
   const factory AbsenceWithStudentView({
     required int absenceId,
     required String student,
+    required String subjectName,
+    required String? teacherNote,
     required String studentCC,
     required DateTime absenceDate,
     required TimeOfDay startTime,
     required TimeOfDay endTime,
-    required PermissionStatus permissionStatus,
+    required PermissionStatus? permissionStatus,
   }) = _AbsenceWithStudentView;
 
   factory AbsenceWithStudentView.fromJson(Map<String, dynamic> json) {
@@ -23,11 +25,13 @@ class AbsenceWithStudentView with _$AbsenceWithStudentView {
       absenceId: json['absenceId'],
       student: json['student'],
       studentCC: json['studentCC'],
+      subjectName: json['subjectName'],
+      teacherNote: json['teacherNote'],
       absenceDate: DateTime.parse(json['absenceDate']),
       startTime: json['startTime'].toString().toDayTime(),
       endTime: json['endTime'].toString().toDayTime(),
       permissionStatus:
-          json['permissionStatus'].toString().toPermissionStatus(),
+          json['permissionStatus']?.toString().toPermissionStatus(),
     );
   }
 }

@@ -10,7 +10,8 @@ class Strings {
   static const students = 'Estudiantes';
   static const permissionRequests = 'Solicitudes de permiso';
   static const permissionRegistry = 'Registro de permisos';
-  static const stats = 'Estadísiticas';
+  static const absencesRegistry = 'Registro de faltas';
+  static const stats = 'Estadísiticas de periodo';
   static const leavingPermissions = 'Permisos de salida';
   static const requiredField = 'Este campo es requerido';
   static const maxCharsAllowed =

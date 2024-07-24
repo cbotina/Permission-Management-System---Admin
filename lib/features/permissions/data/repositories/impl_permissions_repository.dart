@@ -52,7 +52,7 @@ class ImplPermissionsRepository implements IPermissionsRepository {
         HttpHeaders.contentTypeHeader: 'application/json',
         HttpHeaders.authorizationHeader: 'Bearer $token'
       },
-      body: json.encode(newValues),
+      body: json.encode(newValues.toMap()),
     );
 
     final jsonResponse = jsonDecode(response.body) as Map<String, dynamic>;
@@ -92,5 +92,18 @@ class ImplPermissionsRepository implements IPermissionsRepository {
     if (response.statusCode != 201) {
       throw Exception(jsonResponse['message']);
     }
+  }
+
+  @override
+  Future<void> deletePermission(int permissionId) async {
+    final uri = Uri.parse('${ENV.backendUrl}/permissions/$permissionId');
+
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final String? token = prefs.getString('token');
+
+    await http.delete(
+      uri,
+      headers: {HttpHeaders.authorizationHeader: 'Bearer $token'},
+    );
   }
 }

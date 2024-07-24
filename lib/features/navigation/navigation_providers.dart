@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pms_admin/common/constants/strings.dart';
+import 'package:pms_admin/pages/drawer_pages/absences_page.dart';
 import 'package:pms_admin/pages/drawer_pages/groups.dart';
 import 'package:pms_admin/pages/drawer_pages/leaving_permissions.dart';
 import 'package:pms_admin/pages/drawer_pages/periods_page.dart';
@@ -40,4 +41,5 @@ final _builders = <String, WidgetBuilder>{
   Strings.permissionRegistry: (_) => const PermissionRegistry(),
   Strings.stats: (_) => const Stats(),
   Strings.leavingPermissions: (_) => const LeavingPermissionsPage(),
+  Strings.absencesRegistry: (_) => const AbsencesPage(),
 };

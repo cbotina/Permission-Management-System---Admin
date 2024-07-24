@@ -8,5 +8,9 @@ abstract class IPermissionsRepository {
   Future<void> updatePermission(int id, UpdatePermissionDto newValues);
 
   Future<void> createLeavingPermission(
-      int studentId, CreateLeavingPermissionDto dto);
+    int studentId,
+    CreateLeavingPermissionDto dto,
+  );
+
+  Future<void> deletePermission(int permissionId);
 }

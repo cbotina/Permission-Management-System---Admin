@@ -14,7 +14,6 @@ class AuthState with _$AuthState {
   factory AuthState(
     AuthResult authResult,
     int? userId,
-    int? entityId,
     int? periodId,
     UserRole? userRole,
   ) = _AuthState;

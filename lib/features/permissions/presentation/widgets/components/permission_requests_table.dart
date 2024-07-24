@@ -10,7 +10,7 @@ import 'package:pms_admin/common/components/table/table_label.dart';
 import 'package:pms_admin/common/errors/error_widget.dart';
 import 'package:pms_admin/features/permissions/data/providers/period_permissions_repository.dart';
 import 'package:pms_admin/features/permissions/domain/models/permission_with_student_view.dart';
-import 'package:pms_admin/features/permissions/presentation/widgets/components/buttons/edit_permission_icon_button.dart';
+import 'package:pms_admin/features/permissions/presentation/widgets/components/buttons/approve_or_reject_permission_icon_button.dart';
 import 'package:pms_admin/features/permissions/presentation/widgets/components/permission_action_buttons.dart';
 import 'package:pms_admin/features/permissions/presentation/widgets/components/permission_status_widget.dart';
 
@@ -99,7 +99,8 @@ List<DataRow> getPeriodsRows(List<PermissionWithStudentView> permissions) {
                 MainAxisAlignment.center,
               ),
               tableCell(
-                EditPermissionIconButton(permissionId: permission.permissionId),
+                ApproveOrRejectPermissionIconButton(
+                    permissionId: permission.permissionId),
                 MainAxisAlignment.center,
               ),
             ],

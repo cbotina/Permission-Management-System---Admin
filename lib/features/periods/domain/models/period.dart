@@ -13,4 +13,9 @@ class Period with _$Period {
   }) = _Period;
 
   factory Period.fromJson(Map<String, dynamic> json) => _$PeriodFromJson(json);
+
+  @override
+  String toString() {
+    return name;
+  }
 }

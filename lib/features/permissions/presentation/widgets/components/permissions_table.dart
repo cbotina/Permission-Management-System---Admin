@@ -75,7 +75,7 @@ List<DataColumn> periodsColumns = [
   const DataColumn(label: TableLabel('Estudiante')),
   const DataColumn(label: TableLabel('Motivo')),
   const DataColumn(label: TableLabel('Estado')),
-  const DataColumn(label: TableLabel('Ver detalles')),
+  const DataColumn(label: TableLabel('Acciones')),
 ];
 
 List<DataRow> getPeriodsRows(List<PermissionWithStudentView> permissions) {
@@ -98,9 +98,7 @@ List<DataRow> getPeriodsRows(List<PermissionWithStudentView> permissions) {
                 MainAxisAlignment.center,
               ),
               tableCell(
-                ViewPermissionIconButton(
-                  permissionId: permission.permissionId,
-                ),
+                PermissionActionButtons(data: permission),
                 MainAxisAlignment.center,
               ),
             ],

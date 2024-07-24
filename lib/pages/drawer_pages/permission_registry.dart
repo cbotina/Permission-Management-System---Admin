@@ -5,6 +5,7 @@ import 'package:pms_admin/common/components/scrollable_page.dart';
 import 'package:pms_admin/common/components/search_bar.dart';
 import 'package:pms_admin/common/providers/active_period_provider.dart';
 import 'package:pms_admin/features/permissions/data/providers/period_permissions_repository.dart';
+import 'package:pms_admin/features/permissions/data/providers/permissions_provider.dart';
 import 'package:pms_admin/features/permissions/presentation/widgets/components/permissions_table.dart';
 
 class PermissionRegistry extends StatelessWidget {
@@ -29,6 +30,7 @@ class PermissionRegistry extends StatelessWidget {
                 return IconButton(
                   onPressed: () {
                     ref.invalidate(periodPermissionsProvider);
+                    ref.invalidate(permissionDetailsProvider);
                   },
                   icon: const Icon(Icons.refresh),
                 );

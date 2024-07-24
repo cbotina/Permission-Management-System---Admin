@@ -19,9 +19,9 @@ import 'package:pms_admin/features/permissions/presentation/widgets/components/p
 import 'package:pms_admin/features/permissions/presentation/widgets/components/permission_status_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class EditPermissionPage extends ConsumerStatefulWidget {
+class ApproveOrRejectPermissionPage extends ConsumerStatefulWidget {
   final int permissionId;
-  const EditPermissionPage({
+  const ApproveOrRejectPermissionPage({
     super.key,
     required this.permissionId,
   });
@@ -31,7 +31,8 @@ class EditPermissionPage extends ConsumerStatefulWidget {
       _EditPermissionPagState();
 }
 
-class _EditPermissionPagState extends ConsumerState<EditPermissionPage> {
+class _EditPermissionPagState
+    extends ConsumerState<ApproveOrRejectPermissionPage> {
   late TextEditingController _principalCommentController;
 
   @override
@@ -215,8 +216,11 @@ class _EditPermissionPagState extends ConsumerState<EditPermissionPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   RejectPermissionFormButton(
-                      controller: _principalCommentController),
+                    permissionId: widget.permissionId,
+                    controller: _principalCommentController,
+                  ),
                   ApprovePermissionFormButton(
+                    permissionId: widget.permissionId,
                     controller: _principalCommentController,
                   ),
                 ],

@@ -16,16 +16,17 @@ class DeletePeriodIconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DeleteIconButton(
-        enabled: enabled,
-        onTap: () {
-          showDialog(
-            context: context,
-            builder: (context) {
-              return AlertDialog(
-                content: DeletePeriodForm(period: period),
-              );
-            },
-          );
-        });
+      enabled: enabled,
+      onTap: () {
+        showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              content: DeletePeriodForm(period: period),
+            );
+          },
+        );
+      },
+    );
   }
 }

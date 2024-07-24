@@ -37,7 +37,7 @@ class CreateLeavingPermissionFormButton extends ConsumerWidget {
       state.showSnackbarOnError(context);
       state.popOnSuccess(
         prev,
-        "Periodo creado exitosamente",
+        "Permiso creado exitosamente",
         context,
       );
     });

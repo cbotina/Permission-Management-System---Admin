@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pms_admin/common/components/drawer_item.dart';
 import 'package:pms_admin/common/constants/strings.dart';
+import 'package:pms_admin/features/auth/data/providers/role_provider.dart';
+import 'package:pms_admin/features/auth/domain/enums/user_role.dart';
 import 'package:pms_admin/features/periods/presentation/widgets/components/buttons/change_active_period_button.dart';
 
-class AppMenu extends StatelessWidget {
+class AppMenu extends ConsumerWidget {
   const AppMenu({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
     return Container(
       color: Theme.of(context).colorScheme.surfaceContainerHighest,
       width: 250,
@@ -95,9 +98,12 @@ class AppMenu extends StatelessWidget {
                     const SizedBox(
                       height: 15,
                     ),
-                    const DrawerItem(
-                      iconData: Icons.notifications_active,
-                      title: Strings.permissionRequests,
+                    Visibility(
+                      visible: ref.watch(roleProvider) == UserRole.admin,
+                      child: const DrawerItem(
+                        iconData: Icons.notifications_active,
+                        title: Strings.permissionRequests,
+                      ),
                     ),
                     const DrawerItem(
                       iconData: Icons.door_sliding,
@@ -106,6 +112,26 @@ class AppMenu extends StatelessWidget {
                     const DrawerItem(
                       iconData: Icons.history,
                       title: Strings.permissionRegistry,
+                    ),
+                    const Divider(),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    const Text("Faltas"),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    const DrawerItem(
+                      iconData: Icons.not_interested_outlined,
+                      title: Strings.absencesRegistry,
+                    ),
+                    const Divider(),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    const Text("Estadísticas"),
+                    const SizedBox(
+                      height: 15,
                     ),
                     const DrawerItem(
                       iconData: Icons.query_stats_sharp,

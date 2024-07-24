@@ -11,6 +11,14 @@ extension ToPermissionStatus on String {
         return PermissionStatus.approved;
       case 'R':
         return PermissionStatus.rejected;
+      case 'Pendiente':
+        return PermissionStatus.pending;
+      case 'Salida':
+        return PermissionStatus.leavePermission;
+      case 'Aprobado':
+        return PermissionStatus.approved;
+      case 'Rechazado':
+        return PermissionStatus.rejected;
       default:
         return PermissionStatus.pending;
     }
