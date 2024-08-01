@@ -5,6 +5,7 @@ import 'package:pms_admin/common/components/buttons/secondary_button.dart';
 import 'package:pms_admin/common/components/form_fields/date_form_field.dart';
 import 'package:pms_admin/common/components/form_fields/dropdown_button_form_field.dart';
 import 'package:pms_admin/common/components/form_fields/text_form_field.dart';
+import 'package:pms_admin/common/constants/default_reasons.dart';
 import 'package:pms_admin/common/extensions/string_to_date.dart';
 import 'package:pms_admin/features/periods/presentation/widgets/components/utils/date_picker.dart';
 import 'package:pms_admin/features/periods/presentation/widgets/components/validators/date_validator.dart';
@@ -142,7 +143,7 @@ class _CreateLeavingPermissionPageState
                           selectedReason = reason;
                         });
                       },
-                      values: const ['Cita medica', 'Otro'],
+                      values: defaultReasons,
                       validator: reasonValidator,
                     ),
                     const SizedBox(

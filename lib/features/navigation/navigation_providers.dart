@@ -12,6 +12,7 @@ import 'package:pms_admin/pages/drawer_pages/students.dart';
 import 'package:pms_admin/pages/drawer_pages/subjects.dart';
 import 'package:pms_admin/pages/drawer_pages/teachers.dart';
 import 'package:pms_admin/pages/drawer_pages/time_slots_page.dart';
+import 'package:pms_admin/pages/feature_in_development_page.dart';
 
 class SelectedPageNameNotifier extends StateNotifier<String> {
   SelectedPageNameNotifier() : super(Strings.leavingPermissions);
@@ -33,10 +34,10 @@ final selectedPageBuilderProvider = Provider<WidgetBuilder>((ref) {
 final _builders = <String, WidgetBuilder>{
   Strings.periods: (_) => const PeriodsPage(),
   Strings.timeSlots: (_) => const TimeSlots(),
-  Strings.subjects: (_) => const Subjects(),
-  Strings.teachers: (_) => const Teachers(),
-  Strings.groups: (_) => const Groups(),
-  Strings.students: (_) => const Students(),
+  Strings.subjects: (_) => const FeatureInDevelopmentPage(),
+  Strings.teachers: (_) => const FeatureInDevelopmentPage(),
+  Strings.groups: (_) => const FeatureInDevelopmentPage(),
+  Strings.students: (_) => const FeatureInDevelopmentPage(),
   Strings.permissionRequests: (_) => const PermissionRequests(),
   Strings.permissionRegistry: (_) => const PermissionRegistry(),
   Strings.stats: (_) => const Stats(),

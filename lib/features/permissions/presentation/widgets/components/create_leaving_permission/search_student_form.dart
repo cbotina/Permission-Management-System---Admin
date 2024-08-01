@@ -37,7 +37,7 @@ class SearchStudentFormState extends ConsumerState<SearchStudentForm> {
     final students = ref.watch(searchedStudentProvider(searchQuery));
 
     return SizedBox(
-      width: 500,
+      width: 400,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
